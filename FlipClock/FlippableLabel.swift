@@ -59,14 +59,9 @@ class FlippableLabel: UIView {
   
   override init(frame: CGRect) {
     super.init(frame: frame)
-    
-    layer.cornerRadius = 15
-    
-    addSubview(label)
-    label.snp.makeConstraints { make in
-      make.edges.equalToSuperview()
-    }
+    configure()
   }
+
   
   required init?(coder: NSCoder) {
     fatalError("init(coder:) has not been implemented")
@@ -81,6 +76,24 @@ extension FlippableLabel {
   override func layoutSubviews() {
     super.layoutSubviews()
     setGradientBackgroundColor()
+  }
+}
+
+
+// MARK: - Configuration
+
+extension FlippableLabel {
+  
+  private func configure() {
+    
+    // 모서리 둥글게 설정
+    layer.cornerRadius = 15
+    
+    // layout 세팅
+    addSubview(label)
+    label.snp.makeConstraints { make in
+      make.edges.equalToSuperview()
+    }
   }
 }
 
