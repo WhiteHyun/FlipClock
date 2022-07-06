@@ -282,7 +282,7 @@ extension FlippableLabel {
     bottomShadowLayer.add(animation, forKey: "shadowAnimation")
   }
   
-  private func addBottomTileAnimation() {
+  private func bottomLabelFlippingAnimation() {
     
     label.addSubview(nextTextBottomView)
     
@@ -345,7 +345,7 @@ extension FlippableLabel: CAAnimationDelegate {
   func animationDidStop(_ anim: CAAnimation, finished flag: Bool) {
     if flag {
       if anim.value(forKey: "topAnimation") != nil {
-        addBottomTileAnimation()
+        bottomLabelFlippingAnimation()
       }
       else if anim.value(forKey: "bottomAnimation") != nil {
         stopAnimations()
