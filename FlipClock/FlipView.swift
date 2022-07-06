@@ -17,7 +17,13 @@ class FlipView: UIView {
   
   var type: FlipItemType = .seconds
   
-  lazy var item = FlipItem()
+  private lazy var item = FlipItem()
+  
+  var time: String? {
+    didSet {
+      item.text = time
+    }
+  }
   
   
   // MARK: - Initialization

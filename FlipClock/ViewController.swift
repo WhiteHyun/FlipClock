@@ -44,7 +44,7 @@ class ViewController: UIViewController {
   
  
   @objc func test() {
-    label.item.text = formatter.string(from: .now)
+    label.time = formatter.string(from: .now)
   }
   
   
