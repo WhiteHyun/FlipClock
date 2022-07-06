@@ -7,6 +7,8 @@
 
 import UIKit
 
+import SnapKit
+
 class FlippableLabel: UIView {
   
   private let label: UILabel = {
@@ -57,7 +59,9 @@ class FlippableLabel: UIView {
     layer.cornerRadius = 15
     
     addSubview(label)
-    label.frame = bounds
+    label.snp.makeConstraints { make in
+      make.edges.equalToSuperview()
+    }
   }
   
   required init?(coder: NSCoder) {
@@ -68,14 +72,11 @@ class FlippableLabel: UIView {
   override func layoutSubviews() {
     super.layoutSubviews()
     setGradientBackgroundColor()
-    stopAnimations()
   }
   
   
   
-  func updateWithText(_ newText: String) {
-    
-    guard label.text != newText else { return }
+  private func updateWithText(_ newText: String) {
     
     let (previousTextTopView, previousTextBottomView) = createSnapshotViews()
     
