@@ -29,7 +29,7 @@ class FlipItem: UIView {
     }
     
     set {
-      guard let value = newValue else { return }
+      guard let value = newValue, label.text != newValue else { return }
       updateWithText(value)
       animationStart()
     }
