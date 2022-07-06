@@ -10,7 +10,11 @@ import UIKit
 import SnapKit
 import Then
 
+
+
 class FlippableLabel: UIView {
+  
+  // MARK: - Properties
   
   private let label = UILabel().then {
     $0.textAlignment = .center
@@ -18,10 +22,6 @@ class FlippableLabel: UIView {
     $0.text = "00"
     $0.textColor = .systemGray5
   }
-  
-  private let topAnimationDuration: CFTimeInterval = 0.4
-  private let bottomAnimationDuration: CFTimeInterval = 0.2
-  
   
   var text: String? {
     get {
@@ -31,19 +31,21 @@ class FlippableLabel: UIView {
     set {
       guard let value = newValue else { return }
       updateWithText(value)
+      animationStart()
     }
   }
   
-  
-  private lazy var backgroundGradientLayer: CAGradientLayer = {
-    let gradientLayer = CAGradientLayer()
-    gradientLayer.frame = bounds
-    gradientLayer.colors = [
+  private lazy var backgroundGradientLayer = CAGradientLayer().then {
+    $0.frame = bounds
+    $0.colors = [
       UIColor(red: 0.165, green: 0.165, blue: 0.165, alpha: 1).cgColor,
       UIColor(red: 0.086, green: 0.086, blue: 0.086, alpha: 1).cgColor
     ]
-    return gradientLayer
-  }()
+  }
+  
+  
+  private let topAnimationDuration: CFTimeInterval = 0.4
+  private let bottomAnimationDuration: CFTimeInterval = 0.2
   
   
   private var previousTextTopView: UIView!
@@ -51,6 +53,8 @@ class FlippableLabel: UIView {
   
   private var nextTextBottomView: UIView!
   
+  
+  // MARK: - Initialization
   
   override init(frame: CGRect) {
     super.init(frame: frame)
@@ -66,15 +70,27 @@ class FlippableLabel: UIView {
   required init?(coder: NSCoder) {
     fatalError("init(coder:) has not been implemented")
   }
-  
+}
+
+
+// MARK: - Layout Cycle
+
+extension FlippableLabel {
   
   override func layoutSubviews() {
     super.layoutSubviews()
     setGradientBackgroundColor()
   }
+}
+
+// MARK: - Custom Functions
+
+extension FlippableLabel {
   
   
-  
+  /// Flip Animation을 하기 전에 불리는 메소드입니다.
+  /// label에 Flip할 이미지를 넣는 작업을 수행합니다.
+  /// - Parameter newText: 변경될 텍스트
   private func updateWithText(_ newText: String) {
     
     let (previousTextTopView, previousTextBottomView) = createSnapshotViews()
@@ -91,11 +107,7 @@ class FlippableLabel: UIView {
       label.addSubview($0)
     }
     
-    
     previousTextBottomView.clipsToBounds = true
-    
-    
-    animateTiles()
   }
   
   private func setGradientBackgroundColor() {
@@ -148,11 +160,14 @@ class FlippableLabel: UIView {
   }
 }
 
+
+// MARK: - Animations
+
 extension FlippableLabel {
-  private func animateTiles() {
+  private func animationStart() {
     shadowAnimation()
-    addTopTileFlippingAnimation()
-    addBottomShadowAnimation()
+    topLabelFlippingAnimation()
+    bottomShadowAnimation()
   }
   
   /// 윗 부분과 아랫부분 글자의 그림자 애니메이션을 추가합니다.
@@ -180,7 +195,7 @@ extension FlippableLabel {
     }
   }
   
-  private func addTopTileFlippingAnimation() {
+  private func topLabelFlippingAnimation() {
     
     
     // 기준점 가운데 하단으로 설정
@@ -216,7 +231,7 @@ extension FlippableLabel {
     previousTextTopView.layer.add(topAnimation, forKey: "topRotation") // 애니메이션 시작
   }
   
-  private func addBottomShadowAnimation() {
+  private func bottomShadowAnimation() {
     
     let bottomShadowLayer: CAShapeLayer = CAShapeLayer()
     
