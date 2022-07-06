@@ -84,7 +84,12 @@ extension FlipClockView {
   
   @objc func updateTime() {
     let time = formatter.string(from: .now).split(separator: ":")
-    print(time)
+    
+    
+    hourItem.time = String(time[0])
+    minuteItem.time = String(time[1])
+    secondItem.time = String(time[2])
+    
   }
 }
 
