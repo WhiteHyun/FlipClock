@@ -107,11 +107,11 @@ extension FlippableLabel {
   /// - Parameter newText: 변경될 텍스트
   private func updateWithText(_ newText: String) {
     
-    let (previousTextTopView, previousTextBottomView) = createSnapshotViews()
+    let (previousTextTopView, previousTextBottomView) = createLabelImages()
     
     label.text = newText
     
-    let (_, nextTextBottomView) = createSnapshotViews()
+    let (_, nextTextBottomView) = createLabelImages()
     
     self.nextTextBottomView = nextTextBottomView
     self.previousTextTopView = previousTextTopView
@@ -120,8 +120,6 @@ extension FlippableLabel {
     [previousTextTopView, previousTextBottomView].forEach {
       label.addSubview($0)
     }
-    
-    previousTextBottomView.clipsToBounds = true
   }
   
   private func setGradientBackgroundColor() {
@@ -138,8 +136,8 @@ extension FlippableLabel {
   
   
   /// 현재 `label`을 위 아래 절반으로 자른 이미지로 반환합니다.
-  /// - Returns: 윗 부분과 아랫부분의 스냅샷
-  func createSnapshotViews() -> (top: UIView, bottom: UIView) {
+  /// - Returns: 윗 부분과 아랫부분의 레이블 이미지
+  private func createLabelImages() -> (top: UIView, bottom: UIView) {
     
     // 현재 label의 이미지 값을 도출
     UIGraphicsBeginImageContextWithOptions(bounds.size, false, 0)
