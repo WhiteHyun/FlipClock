@@ -7,10 +7,19 @@
 
 import UIKit
 
+import SnapKit
+import Then
+
 class ViewController: UIViewController {
   
-//  private lazy var label = FlippableLabel(frame: CGRect(x: view.center.x - 100, y: view.center.y - 100, width: 200, height: 200))
-  private lazy var label = FlippableLabel(frame: view.bounds)
+  
+  private lazy var label = FlippableLabel()
+  
+  var timer: Timer?
+  
+  let formatter = DateFormatter().then {
+    $0.dateFormat = "ss"
+  }
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -19,12 +28,24 @@ class ViewController: UIViewController {
     
     view.addSubview(label)
     
+    label.snp.makeConstraints { make in
+      make.centerX.centerY.equalToSuperview()
+      make.height.width.equalTo(200)
+    }
+  }
+  
+  override func viewDidAppear(_ animated: Bool) {
+    super.viewDidAppear(animated)
     
-    
-    
-    label.text = "01"
+    if timer == nil {
+      timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(test), userInfo: nil, repeats: true)
+    }
+  }
+  
+ 
+  @objc func test() {
+    label.text = formatter.string(from: .now)
   }
   
   
 }
-
