@@ -85,27 +85,14 @@ extension FlipItem {
   
   private func configure() {
     
-    let line = UIView().then {
-      $0.backgroundColor = .lightGray
-    }
-    
-    
     // 모서리 둥글게 설정
     layer.cornerRadius = 15
     
     // layout 세팅
     addSubview(label)
-    addSubview(line)
-    
     
     label.snp.makeConstraints { make in
       make.edges.equalToSuperview()
-    }
-    
-    line.snp.makeConstraints { make in
-      make.height.equalTo(5)
-      make.centerY.equalToSuperview()
-      make.leading.trailing.equalToSuperview()
     }
   }
 }

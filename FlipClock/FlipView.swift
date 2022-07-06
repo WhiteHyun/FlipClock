@@ -13,11 +13,14 @@ import Then
 
 class FlipView: UIView {
   
+  // MARK: - Properties
+  
   var type: FlipItemType = .seconds
   
   lazy var item = FlipItem()
   
   
+  // MARK: - Initialization
   
   override init(frame: CGRect) {
     super.init(frame: frame)
@@ -29,6 +32,7 @@ class FlipView: UIView {
   }
 }
 
+// MARK: - Configuration
 
 extension FlipView {
   
@@ -36,6 +40,16 @@ extension FlipView {
     addSubview(item)
     item.snp.makeConstraints { make in
       make.edges.equalToSuperview()
+    }
+    
+    let line = UIView().then {
+      $0.backgroundColor = .lightGray
+    }
+    addSubview(line)
+    line.snp.makeConstraints { make in
+      make.height.equalTo(5)
+      make.centerY.equalToSuperview()
+      make.leading.trailing.equalToSuperview()
     }
   }
 }
