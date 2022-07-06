@@ -75,6 +75,7 @@ extension FlipItem {
   override func layoutSubviews() {
     super.layoutSubviews()
     setGradientBackgroundColor()
+    label.clipsToBounds = false // stackview 회전할 때 true값이 됨 (이유 모름)
   }
 }
 
