@@ -7,6 +7,14 @@
 
 import UIKit
 
+protocol ClockDelegate {
+  
+  func start()
+  
+  func stop()
+}
+
+
 class FlipClockView: UIView {
   
   
@@ -29,6 +37,12 @@ class FlipClockView: UIView {
   
   private lazy var secondItem = FlipView().then {
     $0.type = .seconds
+  }
+  
+  private var timer: Timer?
+  
+  let formatter = DateFormatter().then {
+    $0.dateFormat = "hh:mm:ss"
   }
   
   
@@ -67,5 +81,23 @@ extension FlipClockView {
       }
     }
   }
+  
+  @objc func updateTime() {
+    let time = formatter.string(from: .now).split(separator: ":")
+    print(time)
+  }
+}
+
+// MARK: - ClockDelegate
+
+extension FlipClockView: ClockDelegate {
+  func start() {
+    timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(updateTime), userInfo: nil, repeats: true)
+  }
+  
+  func stop() {
+    timer?.invalidate()
+  }
+  
   
 }
