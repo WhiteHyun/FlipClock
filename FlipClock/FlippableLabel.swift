@@ -8,17 +8,16 @@
 import UIKit
 
 import SnapKit
+import Then
 
 class FlippableLabel: UIView {
   
-  private let label: UILabel = {
-    let label = UILabel()
-    label.textAlignment = .center
-    label.font = .systemFont(ofSize: 90, weight: .bold)
-    label.text = "00"
-    label.textColor = .systemGray5
-    return label
-  }()
+  private let label = UILabel().then {
+    $0.textAlignment = .center
+    $0.font = .systemFont(ofSize: 90, weight: .bold)
+    $0.text = "00"
+    $0.textColor = .systemGray5
+  }
   
   private let topAnimationDuration: CFTimeInterval = 0.4
   private let bottomAnimationDuration: CFTimeInterval = 0.2
