@@ -9,6 +9,8 @@ import UIKit
 
 class SettingsViewController: UIViewController {
   
+  weak var coordinator: SettingCoordinator?
+  
   override func viewDidLoad() {
     super.viewDidLoad()
   }

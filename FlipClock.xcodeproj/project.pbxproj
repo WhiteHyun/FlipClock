@@ -14,6 +14,7 @@
 		BA7ECC2928757D4200511694 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA7ECC2828757D4200511694 /* Coordinator.swift */; };
 		BA7ECC2B28757D8A00511694 /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA7ECC2A28757D8A00511694 /* MainCoordinator.swift */; };
 		BA7ECC2E28759CB200511694 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA7ECC2D28759CB200511694 /* SettingsViewController.swift */; };
+		BA7ECC312875A04D00511694 /* SettingCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA7ECC302875A04D00511694 /* SettingCoordinator.swift */; };
 		BA95DE0B28671BDD00041A30 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA95DE0A28671BDD00041A30 /* AppDelegate.swift */; };
 		BA95DE0D28671BDD00041A30 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA95DE0C28671BDD00041A30 /* SceneDelegate.swift */; };
 		BA95DE0F28671BDD00041A30 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA95DE0E28671BDD00041A30 /* ViewController.swift */; };
@@ -28,6 +29,7 @@
 		BA7ECC2828757D4200511694 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		BA7ECC2A28757D8A00511694 /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
 		BA7ECC2D28759CB200511694 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		BA7ECC302875A04D00511694 /* SettingCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingCoordinator.swift; sourceTree = "<group>"; };
 		BA95DE0728671BDD00041A30 /* FlipClock.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FlipClock.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BA95DE0A28671BDD00041A30 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BA95DE0C28671BDD00041A30 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -56,6 +58,7 @@
 			children = (
 				BA7ECC2828757D4200511694 /* Coordinator.swift */,
 				BA7ECC2A28757D8A00511694 /* MainCoordinator.swift */,
+				BA7ECC302875A04D00511694 /* SettingCoordinator.swift */,
 			);
 			path = Coordinators;
 			sourceTree = "<group>";
@@ -187,6 +190,7 @@
 				BA95DE1F28671EFA00041A30 /* FlipItem.swift in Sources */,
 				BA95DE0B28671BDD00041A30 /* AppDelegate.swift in Sources */,
 				BA95DE0D28671BDD00041A30 /* SceneDelegate.swift in Sources */,
+				BA7ECC312875A04D00511694 /* SettingCoordinator.swift in Sources */,
 				BA7ECC2928757D4200511694 /* Coordinator.swift in Sources */,
 				BA7ECC2E28759CB200511694 /* SettingsViewController.swift in Sources */,
 			);
