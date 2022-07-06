@@ -13,7 +13,7 @@ import Then
 class ViewController: UIViewController {
   
   
-  private lazy var label = FlipItem()
+  private lazy var label = FlipView()
   
   var timer: Timer?
   
@@ -24,7 +24,7 @@ class ViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
 //    view.backgroundColor = UIColor(red: 0.063, green: 0.063, blue: 0.063, alpha: 1)
-    view.backgroundColor = .white
+    view.backgroundColor = .lightGray
     
     view.addSubview(label)
     
@@ -44,7 +44,7 @@ class ViewController: UIViewController {
   
  
   @objc func test() {
-    label.text = formatter.string(from: .now)
+    label.item.text = formatter.string(from: .now)
   }
   
   
