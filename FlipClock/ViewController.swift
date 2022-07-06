@@ -7,13 +7,38 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+import SnapKit
+import Then
 
+class ViewController: UIViewController {
+  
+  
+  private lazy var label = FlipClockView()
+  
   override func viewDidLoad() {
     super.viewDidLoad()
-    view.backgroundColor = .red
+//    view.backgroundColor = UIColor(red: 0.063, green: 0.063, blue: 0.063, alpha: 1)
+    view.backgroundColor = .lightGray
+    configure()
+
   }
-
-
+  
+  override func viewDidAppear(_ animated: Bool) {
+    super.viewDidAppear(animated)
+    label.start()
+  }
 }
 
+// MARK: - Configuration
+
+extension ViewController {
+  
+  private func configure() {
+    view.addSubview(label)
+    
+    label.snp.makeConstraints { make in
+      make.edges.equalTo(view.safeAreaLayoutGuide)
+    }
+  }
+  
+}
