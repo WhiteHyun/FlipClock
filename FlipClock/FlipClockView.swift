@@ -15,7 +15,7 @@ class FlipClockView: UIView {
   private lazy var container = UIStackView().then {
     $0.alignment = .center
     $0.axis = .vertical
-    $0.distribution = .equalSpacing
+    $0.distribution = .fillEqually
     $0.spacing = 10
   }
   
@@ -54,6 +54,17 @@ extension FlipClockView {
     
     [hourItem, minuteItem, secondItem].forEach {
       container.addArrangedSubview($0)
+    }
+    
+    container.snp.makeConstraints { make in
+      make.edges.equalToSuperview()
+    }
+    
+    
+    [hourItem, minuteItem, secondItem].forEach { view in
+      view.snp.makeConstraints { make in
+        make.width.equalTo(view.snp.height)
+      }
     }
   }
   
