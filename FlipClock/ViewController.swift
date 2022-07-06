@@ -12,6 +12,7 @@ import Then
 
 class ViewController: UIViewController {
   
+  weak var coordinator: MainCoordinator?
   
   private lazy var label = FlipClockView()
   
