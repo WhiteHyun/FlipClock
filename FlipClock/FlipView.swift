@@ -13,6 +13,7 @@ import Then
 
 class FlipView: UIView {
   
+  var type: FlipItemType = .seconds
   
   lazy var item = FlipItem()
   
@@ -37,4 +38,17 @@ extension FlipView {
       make.edges.equalToSuperview()
     }
   }
+}
+
+// MARK: - Enums
+
+extension FlipView {
+  
+  enum FlipItemType {
+    
+    case hours
+    case minutes
+    case seconds
+  }
+  
 }
