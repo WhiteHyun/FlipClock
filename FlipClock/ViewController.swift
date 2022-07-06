@@ -13,39 +13,32 @@ import Then
 class ViewController: UIViewController {
   
   
-  private lazy var label = FlipView()
-  
-  var timer: Timer?
-  
-  let formatter = DateFormatter().then {
-    $0.dateFormat = "ss"
-  }
+  private lazy var label = FlipClockView()
   
   override func viewDidLoad() {
     super.viewDidLoad()
 //    view.backgroundColor = UIColor(red: 0.063, green: 0.063, blue: 0.063, alpha: 1)
     view.backgroundColor = .lightGray
-    
-    view.addSubview(label)
-    
-    label.snp.makeConstraints { make in
-      make.centerX.centerY.equalToSuperview()
-      make.height.width.equalTo(200)
-    }
+    configure()
+
   }
   
   override func viewDidAppear(_ animated: Bool) {
     super.viewDidAppear(animated)
+    label.start()
+  }
+}
+
+// MARK: - Configuration
+
+extension ViewController {
+  
+  private func configure() {
+    view.addSubview(label)
     
-    if timer == nil {
-      timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(test), userInfo: nil, repeats: true)
+    label.snp.makeConstraints { make in
+      make.edges.equalTo(view.safeAreaLayoutGuide)
     }
   }
-  
- 
-  @objc func test() {
-    label.time = formatter.string(from: .now)
-  }
-  
   
 }
