@@ -23,6 +23,7 @@ class FlippableLabel: UIView {
     $0.textColor = .systemGray5
   }
   
+  /// Flippable label Text
   var text: String? {
     get {
       return label.text
@@ -43,7 +44,7 @@ class FlippableLabel: UIView {
     ]
   }
   
-  
+  // Flip되는 시간 설정
   private let topAnimationDuration: CFTimeInterval = 0.4
   private let bottomAnimationDuration: CFTimeInterval = 0.2
   
@@ -153,7 +154,7 @@ extension FlippableLabel {
     let topView = UIImageView(image: topSnapshotImage)
     let bottomView = UIImageView(image: bottomSnapshotImage)
     
-    // bottomimageView의 y값을 label의 중간으로 설정
+    // bottomimageView를 밑에 둚
     bottomView.frame.origin.y = snapshotSize.height
     
     return (topView, bottomView)
