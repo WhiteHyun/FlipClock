@@ -13,6 +13,7 @@ import Then
 
 class FlipItem: UIView {
   
+  
   // MARK: - Properties
   
   private let label = UILabel().then {
@@ -31,7 +32,7 @@ class FlipItem: UIView {
     set {
       guard let value = newValue, label.text != newValue else { return }
       updateWithText(value)
-      animationStart()
+      startAnimations()
     }
   }
   
@@ -118,11 +119,14 @@ extension FlipItem {
     self.previousTextTopView = previousTextTopView
     self.previousTextBottomView = previousTextBottomView
     
-    [previousTextTopView, previousTextBottomView].forEach {
+    [previousTextTopView, previousTextBottomView, nextTextBottomView].forEach {
       label.addSubview($0)
     }
+    nextTextBottomView.isHidden = true // topView의 애니메이션 완료 후 보여질 예정
   }
   
+  
+  /// 그레디언트 백그라운드 색상을 설정합니다.
   private func setGradientBackgroundColor() {
     
     UIGraphicsBeginImageContext(bounds.size)
@@ -177,7 +181,7 @@ extension FlipItem {
 // MARK: - Animations
 
 extension FlipItem {
-  private func animationStart() {
+  private func startAnimations() {
     shadowAnimation()
     topLabelFlippingAnimation()
     bottomShadowAnimation()
@@ -208,8 +212,9 @@ extension FlipItem {
     }
   }
   
+  
+  /// 윗 부분의 Flip 애니메이션을 진행합니다.
   private func topLabelFlippingAnimation() {
-    
     
     // 기준점 가운데 하단으로 설정
     previousTextTopView.layer.anchorPoint = CGPoint(x: 0.5, y: 1)
@@ -244,6 +249,8 @@ extension FlipItem {
     previousTextTopView.layer.add(topAnimation, forKey: "topRotation") // 애니메이션 시작
   }
   
+  
+  /// 위 Flip 이미지로 인한 그림자를 생성해주기 위한 애니메이션입니다.
   private func bottomShadowAnimation() {
     
     let bottomShadowLayer: CAShapeLayer = CAShapeLayer()
@@ -295,10 +302,11 @@ extension FlipItem {
     bottomShadowLayer.add(animation, forKey: "shadowAnimation")
   }
   
+  
+  /// 아랫부분 이미지의 Flip 애니메이션을 진행합니다.
   private func bottomLabelFlippingAnimation() {
     
-    label.addSubview(nextTextBottomView)
-    
+    nextTextBottomView.isHidden = false
     
     nextTextBottomView.layer.anchorPoint = CGPoint(x: 0.5, y: 0)
     nextTextBottomView.center = CGPoint(
@@ -314,7 +322,7 @@ extension FlipItem {
     bottomAnimation.delegate = self
     
     bottomAnimation.fillMode = .forwards
-    bottomAnimation.timingFunction = CAMediaTimingFunction(name: .linear)
+    bottomAnimation.timingFunction = .init(name: .linear)
     
     bottomAnimation.setValue("End", forKey: "bottomAnimation")
     
