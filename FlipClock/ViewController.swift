@@ -13,7 +13,7 @@ import Then
 class ViewController: UIViewController {
   
   
-  private lazy var label = FlippableLabel()
+  private lazy var label = FlipItem()
   
   var timer: Timer?
   

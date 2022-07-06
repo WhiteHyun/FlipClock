@@ -1,5 +1,5 @@
 //
-//  FlippableLabel.swift
+//  FlipItem.swift
 //  FlipClock
 //
 //  Created by 홍승현 on 2022/06/25.
@@ -11,8 +11,7 @@ import SnapKit
 import Then
 
 
-
-class FlippableLabel: UIView {
+class FlipItem: UIView {
   
   // MARK: - Properties
   
@@ -71,7 +70,7 @@ class FlippableLabel: UIView {
 
 // MARK: - Layout Cycle
 
-extension FlippableLabel {
+extension FlipItem {
   
   override func layoutSubviews() {
     super.layoutSubviews()
@@ -82,7 +81,7 @@ extension FlippableLabel {
 
 // MARK: - Configuration
 
-extension FlippableLabel {
+extension FlipItem {
   
   private func configure() {
     
@@ -99,7 +98,7 @@ extension FlippableLabel {
 
 // MARK: - Custom Functions
 
-extension FlippableLabel {
+extension FlipItem {
   
   
   /// Flip Animation을 하기 전에 불리는 메소드입니다.
@@ -175,7 +174,7 @@ extension FlippableLabel {
 
 // MARK: - Animations
 
-extension FlippableLabel {
+extension FlipItem {
   private func animationStart() {
     shadowAnimation()
     topLabelFlippingAnimation()
@@ -227,7 +226,7 @@ extension FlippableLabel {
     topAnimation.delegate = self
     
     topAnimation.fillMode = .forwards // 애니메이션 끝난 뒤 변경상태 유지
-    topAnimation.timingFunction = .init(name: .easeIn) // easeIn으로 생동감있게 표현
+    topAnimation.timingFunction = .init(name: .easeIn)
     
     topAnimation.setValue("End", forKey: "topAnimation") // key값 설정
     
@@ -351,7 +350,7 @@ extension FlippableLabel {
 }
 
 
-extension FlippableLabel: CAAnimationDelegate {
+extension FlipItem: CAAnimationDelegate {
   
   
   func animationDidStop(_ anim: CAAnimation, finished flag: Bool) {
