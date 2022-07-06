@@ -9,6 +9,29 @@ import UIKit
 
 class FlipClockView: UIView {
   
+  
+  // MARK: - Properties
+  
+  private lazy var container = UIStackView().then {
+    $0.alignment = .center
+    $0.axis = .vertical
+    $0.distribution = .equalSpacing
+    $0.spacing = 10
+  }
+  
+  private lazy var hourItem = FlipView().then {
+    $0.type = .hours
+  }
+  
+  private lazy var minuteItem = FlipView().then {
+    $0.type = .minutes
+  }
+  
+  private lazy var secondItem = FlipView().then {
+    $0.type = .seconds
+  }
+  
+  
   // MARK: - Initialization
   override init(frame: CGRect) {
     super.init(frame: frame)
@@ -27,6 +50,11 @@ extension FlipClockView {
   
   func configure() {
     
+    addSubview(container)
+    
+    [hourItem, minuteItem, secondItem].forEach {
+      container.addArrangedSubview($0)
+    }
   }
   
 }
