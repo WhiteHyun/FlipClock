@@ -47,6 +47,19 @@ extension ViewController {
     label.snp.makeConstraints { make in
       make.edges.equalTo(view.safeAreaLayoutGuide)
     }
+    
+    navigationItem.rightBarButtonItem = UIBarButtonItem(
+      image: UIImage(systemName: "gearshape.fill"),
+      style: .done,
+      target: self,
+      action: #selector(goToSetting)
+    )
+    navigationController?.navigationBar.tintColor = .label
+  }
+  
+  
+  @objc func goToSetting() {
+    coordinator?.moveToSetting()
   }
   
 }
