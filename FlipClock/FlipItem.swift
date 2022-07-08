@@ -37,7 +37,6 @@ class FlipItem: UIView {
   }
   
   private lazy var backgroundGradientLayer = CAGradientLayer().then {
-    $0.frame = bounds
     $0.colors = [
       UIColor(red: 0.165, green: 0.165, blue: 0.165, alpha: 1).cgColor,
       UIColor(red: 0.086, green: 0.086, blue: 0.086, alpha: 1).cgColor
@@ -75,8 +74,8 @@ extension FlipItem {
   
   override func layoutSubviews() {
     super.layoutSubviews()
-    setGradientBackgroundColor()
     label.clipsToBounds = false // stackview 회전할 때 true값이 됨 (이유 모름)
+    setGradientBackgroundColor()
   }
 }
 
@@ -128,7 +127,7 @@ extension FlipItem {
   
   /// 그레디언트 백그라운드 색상을 설정합니다.
   private func setGradientBackgroundColor() {
-    
+    backgroundGradientLayer.frame = bounds
     UIGraphicsBeginImageContext(bounds.size)
     //create UIImage by rendering gradient layer.
     backgroundGradientLayer.render(in: UIGraphicsGetCurrentContext()!)
@@ -356,6 +355,8 @@ extension FlipItem {
       previousTextBottomView.removeFromSuperview()
       previousTextBottomView = nil
     }
+    
+    label.layer.sublayers = nil
   }
 }
 
@@ -364,13 +365,11 @@ extension FlipItem: CAAnimationDelegate {
   
   
   func animationDidStop(_ anim: CAAnimation, finished flag: Bool) {
-    if flag {
-      if anim.value(forKey: "topAnimation") != nil {
+    if flag && anim.value(forKey: "topAnimation") != nil {
         bottomLabelFlippingAnimation()
-      }
-      else if anim.value(forKey: "bottomAnimation") != nil {
+    }
+    else if !flag || (flag && anim.value(forKey: "bottomAnimation") != nil) {
         stopAnimations()
-      }
     }
   }
 }
