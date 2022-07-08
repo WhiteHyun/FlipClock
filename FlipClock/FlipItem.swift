@@ -321,6 +321,7 @@ extension FlipItem {
     bottomAnimation.delegate = self
     
     bottomAnimation.fillMode = .forwards
+    bottomAnimation.isRemovedOnCompletion = false // 애니메이션 끝난 뒤 깜빡이는 현상 수정
     bottomAnimation.timingFunction = .init(name: .linear)
     
     bottomAnimation.setValue("End", forKey: "bottomAnimation")
