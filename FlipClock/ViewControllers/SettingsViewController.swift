@@ -17,6 +17,7 @@ class SettingsViewController: UITableViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     configureUI()
+    configureTableView()
   }
 }
 
@@ -38,5 +39,11 @@ extension SettingsViewController {
     label.snp.makeConstraints { make in
       make.centerX.centerY.equalToSuperview()
     }
+  }
+  
+  private func configureTableView() {
+    tableView.dataSource = self
+    tableView.delegate = self
+    tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
   }
 }
