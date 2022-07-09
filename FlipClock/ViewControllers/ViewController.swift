@@ -45,7 +45,8 @@ extension ViewController {
     view.addSubview(label)
     
     label.snp.makeConstraints { make in
-      make.top.bottom.equalTo(view.safeAreaLayoutGuide)
+      make.top.equalTo(view.safeAreaLayoutGuide)
+      make.bottom.equalTo(view.safeAreaLayoutGuide).inset(40)
       make.leading.trailing.equalTo(view.safeAreaLayoutGuide).inset(40)
     }
     

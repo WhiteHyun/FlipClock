@@ -76,6 +76,7 @@ extension FlipItem {
     super.layoutSubviews()
     label.clipsToBounds = false // stackview 회전할 때 true값이 됨 (이유 모름)
     setGradientBackgroundColor()
+    configureLabelSize()
   }
 }
 
@@ -95,6 +96,12 @@ extension FlipItem {
     label.snp.makeConstraints { make in
       make.edges.equalToSuperview()
     }
+  }
+  
+  
+  /// 플립 시계의 폰트 크기를 상위뷰에 맞추어 설정합니다.
+  private func configureLabelSize() {
+    label.font = .systemFont(ofSize: bounds.width * 0.6, weight: .bold)
   }
 }
 
