@@ -373,7 +373,7 @@ extension FlipItem: CAAnimationDelegate {
     if flag && anim.value(forKey: "topAnimation") != nil {
       bottomLabelFlippingAnimation()
     }
-    else if !flag || (flag && anim.value(forKey: "bottomAnimation") != nil) {
+    else if !flag || anim.value(forKey: "bottomAnimation") != nil {
       stopAnimations()
     }
   }
