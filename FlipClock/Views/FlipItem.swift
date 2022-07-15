@@ -277,9 +277,7 @@ extension FlipItem {
     path.close()
     
     
-    bottomShadowLayer.path = path.cgPath
     bottomShadowLayer.opacity = 0.3
-    bottomShadowLayer.fillColor = UIColor.black.cgColor
     bottomShadowLayer.frame = frame
     
     
