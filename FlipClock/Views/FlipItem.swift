@@ -296,8 +296,8 @@ extension FlipItem {
     ]
     
     animation.timingFunctions = [
-      CAMediaTimingFunction(name: .easeIn),
-      CAMediaTimingFunction(name: .linear)
+      .init(name: .easeIn),
+      .init(name: .linear)
     ]
     animation.duration = topAnimationDuration + bottomAnimationDuration - 0.2
     
