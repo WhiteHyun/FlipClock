@@ -20,7 +20,7 @@ class FlipItem: UIView {
     $0.textAlignment = .center
     $0.font = .systemFont(ofSize: 90, weight: .bold)
     $0.text = "00"
-    $0.textColor = .systemGray5
+    $0.textColor = .white
   }
   
   /// Flippable label Text
