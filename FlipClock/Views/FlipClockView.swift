@@ -27,17 +27,11 @@ class FlipClockView: UIView {
     $0.spacing = 10
   }
   
-  private lazy var hourItem = FlipView().then {
-    $0.type = .hours
-  }
+  private lazy var hourItem = FlipView()
   
-  private lazy var minuteItem = FlipView().then {
-    $0.type = .minutes
-  }
+  private lazy var minuteItem = FlipView()
   
-  private lazy var secondItem = FlipView().then {
-    $0.type = .seconds
-  }
+  private lazy var secondItem = FlipView()
   
   private var timer: Timer?
   

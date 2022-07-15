@@ -15,8 +15,6 @@ class FlipView: UIView {
   
   // MARK: - Properties
   
-  var type: FlipItemType = .seconds
-  
   private lazy var item = FlipItem()
   
   var time: String? {
@@ -58,17 +56,4 @@ extension FlipView {
       make.leading.trailing.equalToSuperview()
     }
   }
-}
-
-// MARK: - Enums
-
-extension FlipView {
-  
-  enum FlipItemType {
-    
-    case hours
-    case minutes
-    case seconds
-  }
-  
 }
