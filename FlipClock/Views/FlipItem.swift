@@ -258,7 +258,7 @@ extension FlipItem {
   /// 위 Flip 이미지로 인한 그림자를 생성해주기 위한 애니메이션입니다.
   private func bottomShadowAnimation() {
     
-    let bottomShadowLayer: CAShapeLayer = CAShapeLayer()
+    let bottomShadowLayer = CAShapeLayer()
     
     let frame = CGRect(
       x: 0,
