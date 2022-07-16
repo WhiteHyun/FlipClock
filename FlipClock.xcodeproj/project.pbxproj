@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		BA5FBB0D2879697300209EDD /* DateFormatter+TimeFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA5FBB0C2879697300209EDD /* DateFormatter+TimeFormatter.swift */; };
 		BA7ECC1E287473F000511694 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = BA7ECC1D287473F000511694 /* SnapKit */; };
 		BA7ECC2128747BBD00511694 /* Then in Frameworks */ = {isa = PBXBuildFile; productRef = BA7ECC2028747BBD00511694 /* Then */; };
 		BA7ECC232875293100511694 /* FlipView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA7ECC222875293100511694 /* FlipView.swift */; };
@@ -25,7 +24,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		BA5FBB0C2879697300209EDD /* DateFormatter+TimeFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DateFormatter+TimeFormatter.swift"; sourceTree = "<group>"; };
 		BA7ECC222875293100511694 /* FlipView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlipView.swift; sourceTree = "<group>"; };
 		BA7ECC2428754CA600511694 /* FlipClockView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlipClockView.swift; sourceTree = "<group>"; };
 		BA7ECC2828757D4200511694 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
@@ -55,14 +53,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		BA5FBB0B2879695500209EDD /* Extensions */ = {
-			isa = PBXGroup;
-			children = (
-				BA5FBB0C2879697300209EDD /* DateFormatter+TimeFormatter.swift */,
-			);
-			path = Extensions;
-			sourceTree = "<group>";
-		};
 		BA5FBB0E28796B1A00209EDD /* Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -113,7 +103,6 @@
 			children = (
 				BA95DE0A28671BDD00041A30 /* AppDelegate.swift */,
 				BA95DE0C28671BDD00041A30 /* SceneDelegate.swift */,
-				BA5FBB0B2879695500209EDD /* Extensions */,
 				BA5FBB0E28796B1A00209EDD /* Views */,
 				BA7ECC2C28757F1500511694 /* Coordinators */,
 				BA7ECC2F28759CB600511694 /* ViewControllers */,
@@ -207,7 +196,6 @@
 				BA95DE0F28671BDD00041A30 /* ViewController.swift in Sources */,
 				BA7ECC2528754CA600511694 /* FlipClockView.swift in Sources */,
 				BA95DE1F28671EFA00041A30 /* FlipItem.swift in Sources */,
-				BA5FBB0D2879697300209EDD /* DateFormatter+TimeFormatter.swift in Sources */,
 				BA95DE0B28671BDD00041A30 /* AppDelegate.swift in Sources */,
 				BA95DE0D28671BDD00041A30 /* SceneDelegate.swift in Sources */,
 				BA7ECC312875A04D00511694 /* SettingCoordinator.swift in Sources */,
