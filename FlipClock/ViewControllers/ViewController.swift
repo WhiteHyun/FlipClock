@@ -54,13 +54,13 @@ extension ViewController {
       image: UIImage(systemName: "gearshape.fill"),
       style: .done,
       target: self,
-      action: #selector(goToSetting)
+      action: #selector(settingButtonDidTapped)
     )
     navigationController?.navigationBar.tintColor = .label
   }
   
   
-  @objc func goToSetting() {
+  @objc func settingButtonDidTapped() {
     coordinator?.moveToSetting()
   }
   

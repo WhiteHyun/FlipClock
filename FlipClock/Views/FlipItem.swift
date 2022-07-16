@@ -20,7 +20,7 @@ class FlipItem: UIView {
     $0.textAlignment = .center
     $0.font = .systemFont(ofSize: 90, weight: .bold)
     $0.text = "00"
-    $0.textColor = .systemGray5
+    $0.textColor = .white
   }
   
   /// Flippable label Text
@@ -60,7 +60,6 @@ class FlipItem: UIView {
     super.init(frame: frame)
     configure()
   }
-
   
   required init?(coder: NSCoder) {
     fatalError("init(coder:) has not been implemented")
@@ -259,7 +258,7 @@ extension FlipItem {
   /// 위 Flip 이미지로 인한 그림자를 생성해주기 위한 애니메이션입니다.
   private func bottomShadowAnimation() {
     
-    let bottomShadowLayer: CAShapeLayer = CAShapeLayer()
+    let bottomShadowLayer = CAShapeLayer()
     
     let frame = CGRect(
       x: 0,
@@ -278,9 +277,7 @@ extension FlipItem {
     path.close()
     
     
-    bottomShadowLayer.path = path.cgPath
     bottomShadowLayer.opacity = 0.3
-    bottomShadowLayer.fillColor = UIColor.black.cgColor
     bottomShadowLayer.frame = frame
     
     
@@ -299,8 +296,8 @@ extension FlipItem {
     ]
     
     animation.timingFunctions = [
-      CAMediaTimingFunction(name: .easeIn),
-      CAMediaTimingFunction(name: .linear)
+      .init(name: .easeIn),
+      .init(name: .linear)
     ]
     animation.duration = topAnimationDuration + bottomAnimationDuration - 0.2
     
@@ -374,10 +371,10 @@ extension FlipItem: CAAnimationDelegate {
   
   func animationDidStop(_ anim: CAAnimation, finished flag: Bool) {
     if flag && anim.value(forKey: "topAnimation") != nil {
-        bottomLabelFlippingAnimation()
+      bottomLabelFlippingAnimation()
     }
-    else if !flag || (flag && anim.value(forKey: "bottomAnimation") != nil) {
-        stopAnimations()
+    else if !flag || anim.value(forKey: "bottomAnimation") != nil {
+      stopAnimations()
     }
   }
 }
