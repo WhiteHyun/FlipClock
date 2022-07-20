@@ -83,6 +83,12 @@ extension FlipClockView {
     }
   }
   
+  func configure(with viewModel: FlipViewViewModel) {
+    [hourItem, minuteItem, secondItem].forEach {
+      $0.configure(with: viewModel)
+    }
+  }
+  
   @objc func updateTime() {
     let time = formatter.string(from: .now).split(separator: ":")
     
