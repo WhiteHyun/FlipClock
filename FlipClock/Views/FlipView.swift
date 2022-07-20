@@ -58,4 +58,10 @@ extension FlipView {
       make.leading.trailing.equalToSuperview()
     }
   }
+  
+  func configure(with model: FlipViewViewModel) {
+    item.configure(with: model.itemModel)
+    line.backgroundColor = model.lineColor
+  }
+  
 }
