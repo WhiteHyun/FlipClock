@@ -14,7 +14,7 @@ class ViewController: UIViewController {
   
   weak var coordinator: MainCoordinator?
   
-  private lazy var label = FlipClockView()
+  private lazy var clockView = FlipClockView()
   
   var viewModel: FlipViewViewModel?
   
@@ -29,17 +29,17 @@ class ViewController: UIViewController {
   
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
-    label.start()
+    clockView.start()
     
     guard let viewModel = viewModel else {
       return
     }
-    label.configure(with: viewModel)
+    clockView.configure(with: viewModel)
   }
   
   override func viewWillDisappear(_ animated: Bool) {
     super.viewWillDisappear(animated)
-    label.stop()
+    clockView.stop()
   }
 }
 
@@ -48,9 +48,9 @@ class ViewController: UIViewController {
 extension ViewController {
   
   private func configure() {
-    view.addSubview(label)
+    view.addSubview(clockView)
     
-    label.snp.makeConstraints { make in
+    clockView.snp.makeConstraints { make in
       make.top.equalTo(view.safeAreaLayoutGuide)
       make.bottom.equalTo(view.safeAreaLayoutGuide).inset(40)
       make.leading.trailing.equalTo(view.safeAreaLayoutGuide).inset(40)
