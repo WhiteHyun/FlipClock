@@ -102,6 +102,12 @@ extension FlipItem {
   private func configureLabelSize() {
     label.font = .systemFont(ofSize: bounds.width * 0.6, weight: .bold)
   }
+  
+  func configure(with model: FlipItemViewModel) {
+    backgroundGradientLayer.colors = model.backgroundGradientColor.map { $0.cgColor }
+    setGradientBackgroundColor()
+    label.textColor = model.textColor
+  }
 }
 
 // MARK: - Custom Functions
