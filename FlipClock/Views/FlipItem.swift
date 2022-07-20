@@ -118,7 +118,7 @@ extension FlipItem {
     
     label.text = newText
     
-    let (_, nextTextBottomView) = createLabelImages()
+    let nextTextBottomView = createLabelImages().bottom
     
     self.nextTextBottomView = nextTextBottomView
     self.previousTextTopView = previousTextTopView
