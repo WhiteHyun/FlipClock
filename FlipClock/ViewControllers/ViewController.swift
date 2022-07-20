@@ -16,6 +16,8 @@ class ViewController: UIViewController {
   
   private lazy var label = FlipClockView()
   
+  var viewModel: FlipViewViewModel?
+  
   // MARK: - Life Cycle
   
   override func viewDidLoad() {
@@ -28,8 +30,12 @@ class ViewController: UIViewController {
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
     label.start()
+    
+    guard let viewModel = viewModel else {
+      return
+    }
+    label.configure(with: viewModel)
   }
-  
   
   override func viewWillDisappear(_ animated: Bool) {
     super.viewWillDisappear(animated)
