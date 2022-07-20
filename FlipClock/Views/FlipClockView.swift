@@ -17,9 +17,7 @@ protocol ClockDelegate {
   func stop()
 }
 
-
 class FlipClockView: UIView {
-  
   
   // MARK: - Properties
   
@@ -42,7 +40,6 @@ class FlipClockView: UIView {
     $0.dateFormat = "hh:mm:ss"
   }
   
-  
   // MARK: - Initialization
   override init(frame: CGRect) {
     super.init(frame: frame)
@@ -63,7 +60,7 @@ extension FlipClockView {
     container.axis = UIDevice.current.orientation.isLandscape ? .horizontal : .vertical
   }
   
-  func configure() {
+  private func configure() {
     
     addSubview(container)
     
@@ -92,11 +89,9 @@ extension FlipClockView {
   @objc func updateTime() {
     let time = formatter.string(from: .now).split(separator: ":")
     
-    
     hourItem.time = String(time[0])
     minuteItem.time = String(time[1])
     secondItem.time = String(time[2])
-    
   }
 }
 
@@ -110,6 +105,4 @@ extension FlipClockView: ClockDelegate {
   func stop() {
     timer?.invalidate()
   }
-  
-  
 }
