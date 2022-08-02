@@ -13,6 +13,7 @@ import Then
 class SettingsViewController: UITableViewController {
   
   weak var coordinator: SettingCoordinator?
+  var viewModel = SettingsViewModel()
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -40,11 +41,11 @@ extension SettingsViewController {
 
 extension SettingsViewController {
   override func numberOfSections(in tableView: UITableView) -> Int {
-    return 3
+    return viewModel.numberOfSections
   }
   
   override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return 1
+    return viewModel.numberOfRowsInSection
   }
   
   override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -52,9 +53,9 @@ extension SettingsViewController {
       fatalError("Cell을 다운캐스팅할 수 없습니다.")
     }
     var content = cell.defaultContentConfiguration()
-    content.image = UIImage(systemName: "star")
-    content.text = "Hello, World!"
-    
+    content.image = UIImage(systemName: viewModel.cellImageNames[indexPath.section])
+    content.text = viewModel.cellTitles[indexPath.section]
+    content.imageProperties.tintColor = .black
     cell.contentConfiguration = content
     
     
@@ -62,6 +63,6 @@ extension SettingsViewController {
   }
   
   override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-    return ["배경 테마", "피드백", "공유"][section]
+    return viewModel.sections[section]
   }
 }
