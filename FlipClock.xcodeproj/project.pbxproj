@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		BA77EF882898F03F005CF4F6 /* SettingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA77EF872898F03F005CF4F6 /* SettingTableViewCell.swift */; };
+		BA77EF8A2898F4E4005CF4F6 /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA77EF892898F4E4005CF4F6 /* SettingsViewModel.swift */; };
 		BA7ECC1E287473F000511694 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = BA7ECC1D287473F000511694 /* SnapKit */; };
 		BA7ECC2128747BBD00511694 /* Then in Frameworks */ = {isa = PBXBuildFile; productRef = BA7ECC2028747BBD00511694 /* Then */; };
 		BA7ECC232875293100511694 /* FlipView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA7ECC222875293100511694 /* FlipView.swift */; };
@@ -26,6 +27,7 @@
 
 /* Begin PBXFileReference section */
 		BA77EF872898F03F005CF4F6 /* SettingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingTableViewCell.swift; sourceTree = "<group>"; };
+		BA77EF892898F4E4005CF4F6 /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
 		BA7ECC222875293100511694 /* FlipView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlipView.swift; sourceTree = "<group>"; };
 		BA7ECC2428754CA600511694 /* FlipClockView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlipClockView.swift; sourceTree = "<group>"; };
 		BA7ECC2828757D4200511694 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
@@ -64,6 +66,14 @@
 				BA77EF872898F03F005CF4F6 /* SettingTableViewCell.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		BA77EF8B2898F4E8005CF4F6 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				BA77EF892898F4E4005CF4F6 /* SettingsViewModel.swift */,
+			);
+			path = ViewModels;
 			sourceTree = "<group>";
 		};
 		BA7ECC2C28757F1500511694 /* Coordinators */ = {
@@ -106,8 +116,9 @@
 			children = (
 				BA95DE0A28671BDD00041A30 /* AppDelegate.swift */,
 				BA95DE0C28671BDD00041A30 /* SceneDelegate.swift */,
-				BA5FBB0E28796B1A00209EDD /* Views */,
 				BA7ECC2C28757F1500511694 /* Coordinators */,
+				BA5FBB0E28796B1A00209EDD /* Views */,
+				BA77EF8B2898F4E8005CF4F6 /* ViewModels */,
 				BA7ECC2F28759CB600511694 /* ViewControllers */,
 				BA95DE1328671BDE00041A30 /* Assets.xcassets */,
 				BA95DE1528671BDE00041A30 /* LaunchScreen.storyboard */,
@@ -205,6 +216,7 @@
 				BA7ECC312875A04D00511694 /* SettingCoordinator.swift in Sources */,
 				BA7ECC2928757D4200511694 /* Coordinator.swift in Sources */,
 				BA7ECC2E28759CB200511694 /* SettingsViewController.swift in Sources */,
+				BA77EF8A2898F4E4005CF4F6 /* SettingsViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
