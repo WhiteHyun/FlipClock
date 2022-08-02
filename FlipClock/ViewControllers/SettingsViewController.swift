@@ -5,6 +5,7 @@
 //  Created by 홍승현 on 2022/07/06.
 //
 
+import MessageUI
 import UIKit
 
 import SnapKit
@@ -77,11 +78,39 @@ extension SettingsViewController {
     case 0: // theme
       break
     case 1: // mail
-      break
+      sendMail()
     case 2: // share
       break
     default:
       break
     }
+  }
+}
+
+
+// MARK: - MFMailComposeViewControllerDelegate
+
+extension SettingsViewController: MFMailComposeViewControllerDelegate {
+  
+  private func showMailErrorAlert() {
+    let controller = UIAlertController(title: "실패", message: "아이폰 메일 설정을 확인해주세요.", preferredStyle: .alert)
+    controller.addAction(UIAlertAction(title: "확인", style: .default))
+    present(controller, animated: true)
+  }
+  
+  private func sendMail() {
+    guard MFMailComposeViewController.canSendMail() else {
+      showMailErrorAlert()
+      return
+    }
+    let composeVC = MFMailComposeViewController()
+    composeVC.mailComposeDelegate = self
+    composeVC.setToRecipients(["whi7ehyun@gmail.com"])
+    composeVC.setSubject("<Flip Clock> 문의 및 의견")
+    present(composeVC, animated: true)
+  }
+  
+  func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
+    controller.dismiss(animated: true)
   }
 }
