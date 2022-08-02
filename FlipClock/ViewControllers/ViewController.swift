@@ -14,7 +14,7 @@ class ViewController: UIViewController {
   
   weak var coordinator: MainCoordinator?
   
-  private lazy var label = FlipClockView()
+  private lazy var clockView = FlipClockView()
   
   // MARK: - Life Cycle
   
@@ -26,13 +26,13 @@ class ViewController: UIViewController {
   
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
-    label.start()
+    clockView.start()
   }
   
   
   override func viewWillDisappear(_ animated: Bool) {
     super.viewWillDisappear(animated)
-    label.stop()
+    clockView.stop()
   }
 }
 
@@ -41,9 +41,9 @@ class ViewController: UIViewController {
 extension ViewController {
   
   private func configure() {
-    view.addSubview(label)
+    view.addSubview(clockView)
     
-    label.snp.makeConstraints { make in
+    clockView.snp.makeConstraints { make in
       make.top.equalTo(view.safeAreaLayoutGuide)
       make.bottom.equalTo(view.safeAreaLayoutGuide).inset(40)
       make.leading.trailing.equalTo(view.safeAreaLayoutGuide).inset(40)
@@ -62,5 +62,4 @@ extension ViewController {
   @objc func settingButtonDidTapped() {
     coordinator?.moveToSetting()
   }
-  
 }
