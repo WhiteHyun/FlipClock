@@ -79,8 +79,6 @@ extension SettingsViewController {
       break
     case 1: // mail
       sendMail()
-    case 2: // share
-      break
     default:
       break
     }
@@ -88,7 +86,7 @@ extension SettingsViewController {
 }
 
 
-// MARK: - MFMailComposeViewControllerDelegate
+// MARK: - MFMailComposeViewController
 
 extension SettingsViewController: MFMailComposeViewControllerDelegate {
   
