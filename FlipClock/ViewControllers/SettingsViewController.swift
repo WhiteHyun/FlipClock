@@ -27,7 +27,7 @@ class SettingsViewController: UITableViewController {
 extension SettingsViewController {
   
   private func configureUI() {
-    view.backgroundColor = .lightGray
+    view.backgroundColor = .white
   }
   
   private func configureTableView() {
