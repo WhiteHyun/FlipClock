@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BA77EF882898F03F005CF4F6 /* SettingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA77EF872898F03F005CF4F6 /* SettingTableViewCell.swift */; };
 		BA7ECC1E287473F000511694 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = BA7ECC1D287473F000511694 /* SnapKit */; };
 		BA7ECC2128747BBD00511694 /* Then in Frameworks */ = {isa = PBXBuildFile; productRef = BA7ECC2028747BBD00511694 /* Then */; };
 		BA7ECC232875293100511694 /* FlipView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA7ECC222875293100511694 /* FlipView.swift */; };
@@ -24,6 +25,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		BA77EF872898F03F005CF4F6 /* SettingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingTableViewCell.swift; sourceTree = "<group>"; };
 		BA7ECC222875293100511694 /* FlipView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlipView.swift; sourceTree = "<group>"; };
 		BA7ECC2428754CA600511694 /* FlipClockView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlipClockView.swift; sourceTree = "<group>"; };
 		BA7ECC2828757D4200511694 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
@@ -59,6 +61,7 @@
 				BA95DE1E28671EFA00041A30 /* FlipItem.swift */,
 				BA7ECC222875293100511694 /* FlipView.swift */,
 				BA7ECC2428754CA600511694 /* FlipClockView.swift */,
+				BA77EF872898F03F005CF4F6 /* SettingTableViewCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -191,6 +194,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BA77EF882898F03F005CF4F6 /* SettingTableViewCell.swift in Sources */,
 				BA7ECC232875293100511694 /* FlipView.swift in Sources */,
 				BA7ECC2B28757D8A00511694 /* MainCoordinator.swift in Sources */,
 				BA95DE0F28671BDD00041A30 /* ViewController.swift in Sources */,
