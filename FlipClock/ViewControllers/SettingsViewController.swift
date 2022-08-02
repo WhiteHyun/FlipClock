@@ -66,3 +66,22 @@ extension SettingsViewController {
     return viewModel.sections[section]
   }
 }
+
+// MARK: - UITableViewDelegate
+
+extension SettingsViewController {
+  
+  override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    
+    switch indexPath.section {
+    case 0: // theme
+      break
+    case 1: // mail
+      break
+    case 2: // share
+      break
+    default:
+      break
+    }
+  }
+}
