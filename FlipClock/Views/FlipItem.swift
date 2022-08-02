@@ -102,7 +102,6 @@ extension FlipItem {
 
 extension FlipItem {
   
-  
   /// Flip Animation을 하기 전에 불리는 메소드입니다.
   /// label에 Flip할 이미지를 넣는 작업을 수행합니다.
   /// - Parameter newText: 변경될 텍스트
@@ -112,7 +111,7 @@ extension FlipItem {
     
     label.text = newText
     
-    let (_, nextTextBottomView) = createLabelImages()
+    let nextTextBottomView = createLabelImages().bottom
     
     self.nextTextBottomView = nextTextBottomView
     self.previousTextTopView = previousTextTopView
@@ -123,6 +122,7 @@ extension FlipItem {
     }
     nextTextBottomView.isHidden = true // topView의 애니메이션 완료 후 보여질 예정
   }
+  
   
   /// 현재 `label`을 위 아래 절반으로 자른 이미지로 반환합니다.
   /// - Returns: 윗 부분과 아랫부분의 레이블 이미지
@@ -147,7 +147,6 @@ extension FlipItem {
     // 아랫부분을 이미지로 가져옴
     UIGraphicsBeginImageContextWithOptions(snapshotSize, false, 0)
     image.draw(at: CGPoint(x: 0, y: -image.size.height * 0.5))
-    
     let bottomSnapshotImage = UIGraphicsGetImageFromCurrentImageContext()!
     UIGraphicsEndImageContext()
     
