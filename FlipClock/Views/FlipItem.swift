@@ -36,13 +36,6 @@ class FlipItem: UIView {
     }
   }
   
-  private lazy var backgroundGradientLayer = CAGradientLayer().then {
-    $0.colors = [
-      UIColor(red: 0.165, green: 0.165, blue: 0.165, alpha: 1).cgColor,
-      UIColor(red: 0.086, green: 0.086, blue: 0.086, alpha: 1).cgColor
-    ]
-  }
-  
   // Flip되는 시간 설정
   private let topAnimationDuration: CFTimeInterval = 0.4
   private let bottomAnimationDuration: CFTimeInterval = 0.2
@@ -74,7 +67,6 @@ extension FlipItem {
   override func layoutSubviews() {
     super.layoutSubviews()
     label.clipsToBounds = false // stackview 회전할 때 true값이 됨 (이유 모름)
-    setGradientBackgroundColor()
     configureLabelSize()
   }
 }
@@ -95,6 +87,8 @@ extension FlipItem {
     label.snp.makeConstraints { make in
       make.edges.equalToSuperview()
     }
+    
+    backgroundColor = .black
   }
   
   
@@ -129,21 +123,6 @@ extension FlipItem {
     }
     nextTextBottomView.isHidden = true // topView의 애니메이션 완료 후 보여질 예정
   }
-  
-  
-  /// 그레디언트 백그라운드 색상을 설정합니다.
-  private func setGradientBackgroundColor() {
-    backgroundGradientLayer.frame = bounds
-    UIGraphicsBeginImageContext(bounds.size)
-    //create UIImage by rendering gradient layer.
-    backgroundGradientLayer.render(in: UIGraphicsGetCurrentContext()!)
-    let image = UIGraphicsGetImageFromCurrentImageContext()
-    UIGraphicsEndImageContext()
-    //get gradient UIcolor from gradient UIImage
-    backgroundColor = UIColor(patternImage: image!)
-    
-  }
-  
   
   /// 현재 `label`을 위 아래 절반으로 자른 이미지로 반환합니다.
   /// - Returns: 윗 부분과 아랫부분의 레이블 이미지
