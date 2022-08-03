@@ -7,12 +7,12 @@ extension UserDefaults {
     set { set(newValue, forKey: #function) }
   }
   
-  var textColor: Int {
+  var textColorTheme: Int {
     get { integer(forKey: #function) }
     set { set(newValue, forKey: #function) }
   }
   
-  var clockBackgroundColor: Int {
+  var clockBackgroundColorTheme: Int {
     get { integer(forKey: #function) }
     set { set(newValue, forKey: #function) }
   }
