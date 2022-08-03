@@ -22,6 +22,7 @@ class ThemeViewController: UITableViewController {
   }
   
   private func configureTableView() {
+    tableView.separatorStyle = .none
     tableView.dataSource = self
     tableView.delegate = self
     tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
