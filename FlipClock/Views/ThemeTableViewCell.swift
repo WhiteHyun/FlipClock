@@ -31,7 +31,13 @@ final class ThemeTableViewCell: UITableViewCell {
     contentView.addSubview(themeImageView)
     
     themeImageView.snp.makeConstraints { make in
-      make.edges.equalToSuperview()
+      make.edges.equalToSuperview().inset(20)
     }
+    
+    contentView.backgroundColor = .white
+  }
+  
+  func configure(with image: UIImage) {
+    themeImageView.image = image
   }
 }
