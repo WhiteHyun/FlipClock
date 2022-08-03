@@ -20,7 +20,7 @@ class FlipItem: UIView {
     $0.textAlignment = .center
     $0.font = .systemFont(ofSize: 90, weight: .bold)
     $0.text = "00"
-    $0.textColor = .white
+    $0.textColor = UserDefaults.standard.isThemeConfigured ? .init(rgb: UserDefaults.standard.textColorTheme) : .white
   }
   
   /// Flippable label Text
@@ -66,8 +66,7 @@ extension FlipItem {
   
   override func layoutSubviews() {
     super.layoutSubviews()
-    label.clipsToBounds = false // stackview 회전할 때 true값이 됨 (이유 모름)
-    configureLabelSize()
+    configureLabelStyles()
   }
 }
 
@@ -88,12 +87,13 @@ extension FlipItem {
       make.edges.equalToSuperview()
     }
     
-    backgroundColor = .black
+    backgroundColor = UserDefaults.standard.isThemeConfigured ? .init(rgb: UserDefaults.standard.clockBackgroundColorTheme) : .black
   }
   
   
   /// 플립 시계의 폰트 크기를 상위뷰에 맞추어 설정합니다.
-  private func configureLabelSize() {
+  private func configureLabelStyles() {
+    label.clipsToBounds = false // stackview 회전할 때 true값이 됨 (이유 모름)
     label.font = .systemFont(ofSize: bounds.width * 0.6, weight: .bold)
   }
 }

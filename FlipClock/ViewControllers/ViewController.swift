@@ -20,7 +20,7 @@ class ViewController: UIViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    view.backgroundColor = .lightGray
+    view.backgroundColor = UserDefaults.standard.isThemeConfigured ? .init(rgb: UserDefaults.standard.backgroundColorTheme) : .lightGray
     configure()
   }
   

@@ -18,7 +18,7 @@ class FlipView: UIView {
   private lazy var item = FlipItem()
   
   private lazy var line = UIView().then {
-    $0.backgroundColor = .lightGray
+    $0.backgroundColor = UserDefaults.standard.isThemeConfigured ? .init(rgb: UserDefaults.standard.backgroundColorTheme) : .lightGray
   }
   
   var time: String? {
