@@ -2,17 +2,17 @@ import Foundation
 
 extension UserDefaults {
   
-  var backgroundColorTheme: Int {
+  @objc var backgroundColorTheme: Int {
     get { integer(forKey: #function) }
     set { set(newValue, forKey: #function) }
   }
   
-  var textColorTheme: Int {
+  @objc var textColorTheme: Int {
     get { integer(forKey: #function) }
     set { set(newValue, forKey: #function) }
   }
   
-  var clockBackgroundColorTheme: Int {
+  @objc var clockBackgroundColorTheme: Int {
     get { integer(forKey: #function) }
     set { set(newValue, forKey: #function) }
   }
