@@ -17,4 +17,12 @@ struct ThemeViewModel {
   var numberOfRowsInSection: Int {
     clockThemes.count
   }
+  
+  func userDefaults(storeWith index: Int) {
+    UserDefaults.standard.do {
+      $0.backgroundColorTheme = backgroundColorTheme[index]
+      $0.textColorTheme = textColorTheme[index]
+      $0.clockBackgroundColorTheme = clockBackgroundColorTheme[index]
+    }
+  }
 }
