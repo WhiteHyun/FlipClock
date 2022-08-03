@@ -16,6 +16,10 @@ final class ThemeTableViewCell: UITableViewCell {
   
   private lazy var themeImageView = UIImageView().then {
     $0.contentMode = .scaleAspectFit
+    $0.layer.shadowOffset = CGSize(width: 5, height: 5)
+    $0.layer.shadowOpacity = 0.7
+    $0.layer.shadowRadius = 5
+    $0.layer.shadowColor = UIColor.gray.cgColor
   }
   
   override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -33,8 +37,6 @@ final class ThemeTableViewCell: UITableViewCell {
     themeImageView.snp.makeConstraints { make in
       make.edges.equalToSuperview().inset(20)
     }
-    
-    contentView.backgroundColor = .white
   }
   
   func configure(with image: UIImage) {
