@@ -5,6 +5,7 @@
 //  Created by 홍승현 on 2022/06/25.
 //
 
+import Combine
 import UIKit
 
 import SnapKit
@@ -20,7 +21,6 @@ class FlipItem: UIView {
     $0.textAlignment = .center
     $0.font = .systemFont(ofSize: 90, weight: .bold)
     $0.text = "00"
-    $0.textColor = UserDefaults.standard.isThemeConfigured ? .init(rgb: UserDefaults.standard.textColorTheme) : .white
   }
   
   /// Flippable label Text
@@ -46,12 +46,15 @@ class FlipItem: UIView {
   
   private var nextTextBottomView: UIView!
   
+  private var subscriptions = Set<AnyCancellable>()
+  
   
   // MARK: - Initialization
   
   override init(frame: CGRect) {
     super.init(frame: frame)
     configure()
+    binding()
   }
   
   required init?(coder: NSCoder) {
@@ -95,6 +98,22 @@ extension FlipItem {
   private func configureLabelStyles() {
     label.clipsToBounds = false // stackview 회전할 때 true값이 됨 (이유 모름)
     label.font = .systemFont(ofSize: bounds.width * 0.6, weight: .bold)
+  }
+  
+  private func binding() {
+    UserDefaults.standard
+      .publisher(for: \.clockBackgroundColorTheme)
+      .sink { [weak self] in
+        self?.backgroundColor = .init(rgb: $0)
+      }
+      .store(in: &subscriptions)
+    
+    UserDefaults.standard
+      .publisher(for: \.textColorTheme)
+      .sink { [weak self] in
+        self?.label.textColor = .init(rgb: $0)
+      }
+      .store(in: &subscriptions)
   }
 }
 
