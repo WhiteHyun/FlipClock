@@ -23,4 +23,10 @@ class SettingCoordinator: Coordinator {
     vc.coordinator = self
     navigationController.pushViewController(vc, animated: true)
   }
+  
+  func moveToThemeVC() {
+    let child = ThemeCoordinator(navigationController: navigationController)
+    
+    child.start()
+  }
 }

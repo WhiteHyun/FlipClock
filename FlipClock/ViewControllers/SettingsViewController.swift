@@ -76,6 +76,7 @@ extension SettingsViewController {
     
     switch indexPath.section {
     case 0: // theme
+      coordinator?.moveToThemeVC()
       break
     case 1: // mail
       sendMail()

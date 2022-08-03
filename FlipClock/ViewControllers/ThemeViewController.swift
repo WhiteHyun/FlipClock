@@ -9,6 +9,8 @@ import UIKit
 
 class ThemeViewController: UIViewController {
   
+  weak var coordinator: ThemeCoordinator?
+  
   override func viewDidLoad() {
     super.viewDidLoad()
   }
