@@ -11,6 +11,7 @@
 		BA77EF8A2898F4E4005CF4F6 /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA77EF892898F4E4005CF4F6 /* SettingsViewModel.swift */; };
 		BA77EF8D28995550005CF4F6 /* ThemeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA77EF8C28995550005CF4F6 /* ThemeViewController.swift */; };
 		BA77EF8F289A0DEC005CF4F6 /* ThemeCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA77EF8E289A0DEC005CF4F6 /* ThemeCoordinator.swift */; };
+		BA77EF91289A21FC005CF4F6 /* ThemeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA77EF90289A21FC005CF4F6 /* ThemeViewModel.swift */; };
 		BA7ECC1E287473F000511694 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = BA7ECC1D287473F000511694 /* SnapKit */; };
 		BA7ECC2128747BBD00511694 /* Then in Frameworks */ = {isa = PBXBuildFile; productRef = BA7ECC2028747BBD00511694 /* Then */; };
 		BA7ECC232875293100511694 /* FlipView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA7ECC222875293100511694 /* FlipView.swift */; };
@@ -32,6 +33,7 @@
 		BA77EF892898F4E4005CF4F6 /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
 		BA77EF8C28995550005CF4F6 /* ThemeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeViewController.swift; sourceTree = "<group>"; };
 		BA77EF8E289A0DEC005CF4F6 /* ThemeCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeCoordinator.swift; sourceTree = "<group>"; };
+		BA77EF90289A21FC005CF4F6 /* ThemeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeViewModel.swift; sourceTree = "<group>"; };
 		BA7ECC222875293100511694 /* FlipView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlipView.swift; sourceTree = "<group>"; };
 		BA7ECC2428754CA600511694 /* FlipClockView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlipClockView.swift; sourceTree = "<group>"; };
 		BA7ECC2828757D4200511694 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
@@ -76,6 +78,7 @@
 			isa = PBXGroup;
 			children = (
 				BA77EF892898F4E4005CF4F6 /* SettingsViewModel.swift */,
+				BA77EF90289A21FC005CF4F6 /* ThemeViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -221,6 +224,7 @@
 				BA95DE1F28671EFA00041A30 /* FlipItem.swift in Sources */,
 				BA95DE0B28671BDD00041A30 /* AppDelegate.swift in Sources */,
 				BA95DE0D28671BDD00041A30 /* SceneDelegate.swift in Sources */,
+				BA77EF91289A21FC005CF4F6 /* ThemeViewModel.swift in Sources */,
 				BA7ECC312875A04D00511694 /* SettingCoordinator.swift in Sources */,
 				BA7ECC2928757D4200511694 /* Coordinator.swift in Sources */,
 				BA7ECC2E28759CB200511694 /* SettingsViewController.swift in Sources */,
