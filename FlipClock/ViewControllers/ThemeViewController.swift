@@ -19,7 +19,7 @@ class ThemeViewController: UITableViewController {
   }
   
   private func configureUI() {
-    view.backgroundColor = .white
+    view.backgroundColor = .systemBackground
   }
   
   private func configureTableView() {
