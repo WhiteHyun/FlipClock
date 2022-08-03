@@ -51,9 +51,14 @@ extension ThemeViewController {
   }
 }
 
+// MARK: - UITableViewDelegate
 
 extension ThemeViewController {
   override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
     return 230
+  }
+  
+  override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    viewModel.userDefaults(storeWith: indexPath.row)
   }
 }
