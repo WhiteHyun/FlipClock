@@ -17,6 +17,10 @@ class FlipView: UIView {
   
   private lazy var item = FlipItem()
   
+  private lazy var line = UIView().then {
+    $0.backgroundColor = .lightGray
+  }
+  
   var time: String? {
     didSet {
       item.text = time
@@ -42,14 +46,12 @@ extension FlipView {
   
   private func configure() {
     addSubview(item)
+    addSubview(line)
+    
     item.snp.makeConstraints { make in
       make.edges.equalToSuperview()
     }
     
-    let line = UIView().then {
-      $0.backgroundColor = .lightGray
-    }
-    addSubview(line)
     line.snp.makeConstraints { make in
       make.height.equalTo(5)
       make.centerY.equalToSuperview()
