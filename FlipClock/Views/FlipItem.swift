@@ -261,7 +261,7 @@ extension FlipItem {
       x: 0,
       y: 0,
       width: previousTextBottomView.frame.width,
-      height: previousTextBottomView.frame.height * 0.8
+      height: previousTextBottomView.frame.height
     )
     
     previousTextBottomView.layer.addSublayer(bottomShadowLayer)
@@ -296,7 +296,7 @@ extension FlipItem {
       .init(name: .easeIn),
       .init(name: .linear)
     ]
-    animation.duration = topAnimationDuration + bottomAnimationDuration - 0.2
+    animation.duration = topAnimationDuration + bottomAnimationDuration
     
     
     bottomShadowLayer.add(animation, forKey: "shadowAnimation")

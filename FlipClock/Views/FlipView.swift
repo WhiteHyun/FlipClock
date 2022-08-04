@@ -55,7 +55,7 @@ extension FlipView {
     }
     
     line.snp.makeConstraints { make in
-      make.height.equalTo(5)
+      make.height.equalTo(3)
       make.centerY.equalToSuperview()
       make.leading.trailing.equalToSuperview()
     }
