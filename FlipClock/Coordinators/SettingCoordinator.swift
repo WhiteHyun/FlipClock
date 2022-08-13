@@ -26,7 +26,6 @@ class SettingCoordinator: Coordinator {
   
   func moveToThemeVC() {
     let child = ThemeCoordinator(navigationController: navigationController)
-    
     child.start()
   }
 }

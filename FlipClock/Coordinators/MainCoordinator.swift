@@ -62,7 +62,6 @@ extension MainCoordinator: UINavigationControllerDelegate {
     didShow viewController: UIViewController,
     animated: Bool
   ) {
-    
     guard let fromVC = navigationController.transitionCoordinator?.viewController(forKey: .from) else {
       return
     }
@@ -74,7 +73,5 @@ extension MainCoordinator: UINavigationControllerDelegate {
     if let settingVC = fromVC as? SettingsViewController {
       childDidFinish(settingVC.coordinator)
     }
-    
-    
   }
 }
