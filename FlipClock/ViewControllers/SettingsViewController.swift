@@ -11,15 +11,22 @@ import UIKit
 import SnapKit
 import Then
 
-class SettingsViewController: UITableViewController {
+class SettingsViewController: UIViewController {
   
   weak var coordinator: SettingCoordinator?
   var viewModel = SettingsViewModel()
   
+  private lazy var tableView = UITableView(frame: .zero, style: .insetGrouped).then {
+    $0.dataSource = self
+    $0.delegate = self
+    $0.register(SettingTableViewCell.self, forCellReuseIdentifier: SettingTableViewCell.id)
+  }
+  
   override func viewDidLoad() {
     super.viewDidLoad()
+    configureLayout()
+    configureConstraints()
     configureUI()
-    configureTableView()
   }
 }
 
@@ -27,29 +34,33 @@ class SettingsViewController: UITableViewController {
 
 extension SettingsViewController {
   
-  private func configureUI() {
-    view.backgroundColor = .systemBackground
+  private func configureLayout() {
+    view.addSubview(tableView)
   }
   
-  private func configureTableView() {
-    tableView.dataSource = self
-    tableView.delegate = self
-    tableView.register(SettingTableViewCell.self, forCellReuseIdentifier: SettingTableViewCell.id)
+  private func configureConstraints() {
+    tableView.snp.makeConstraints { make in
+      make.edges.equalToSuperview()
+    }
+  }
+  
+  private func configureUI() {
+    view.backgroundColor = .systemBackground
   }
 }
 
 // MARK: - UITableViewDataSource
 
-extension SettingsViewController {
-  override func numberOfSections(in tableView: UITableView) -> Int {
+extension SettingsViewController: UITableViewDataSource {
+  func numberOfSections(in tableView: UITableView) -> Int {
     return viewModel.numberOfSections
   }
   
-  override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+  func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     return viewModel.numberOfRowsInSection
   }
   
-  override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+  func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     guard let cell = tableView.dequeueReusableCell(withIdentifier: SettingTableViewCell.id, for: indexPath) as? SettingTableViewCell else {
       fatalError("Cell을 다운캐스팅할 수 없습니다.")
     }
@@ -63,16 +74,16 @@ extension SettingsViewController {
     return cell
   }
   
-  override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+  func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
     return viewModel.sections[section]
   }
 }
 
 // MARK: - UITableViewDelegate
 
-extension SettingsViewController {
+extension SettingsViewController: UITableViewDelegate {
   
-  override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+  func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     
     switch indexPath.section {
     case 0: // theme
