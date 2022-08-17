@@ -5,6 +5,7 @@
 //  Created by 홍승현 on 2022/06/25.
 //
 
+import Combine
 import UIKit
 
 import SnapKit
@@ -15,13 +16,14 @@ class ViewController: UIViewController {
   weak var coordinator: MainCoordinator?
   
   private lazy var clockView = FlipClockView()
+  private var subscriptions = Set<AnyCancellable>()
   
   // MARK: - Life Cycle
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    view.backgroundColor = .lightGray
     configure()
+    binding()
   }
   
   override func viewWillAppear(_ animated: Bool) {
@@ -56,6 +58,15 @@ extension ViewController {
       action: #selector(settingButtonDidTapped)
     )
     navigationController?.navigationBar.tintColor = .label
+  }
+  
+  private func binding() {
+    UserDefaults.standard
+      .publisher(for: \.backgroundColorTheme)
+      .sink { [weak self] in
+        self?.view.backgroundColor = .init(rgb: $0)
+      }
+      .store(in: &subscriptions)
   }
   
   

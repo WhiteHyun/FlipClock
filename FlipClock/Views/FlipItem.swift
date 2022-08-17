@@ -5,6 +5,7 @@
 //  Created by 홍승현 on 2022/06/25.
 //
 
+import Combine
 import UIKit
 
 import SnapKit
@@ -20,7 +21,6 @@ class FlipItem: UIView {
     $0.textAlignment = .center
     $0.font = .systemFont(ofSize: 90, weight: .bold)
     $0.text = "00"
-    $0.textColor = .white
   }
   
   /// Flippable label Text
@@ -46,12 +46,15 @@ class FlipItem: UIView {
   
   private var nextTextBottomView: UIView!
   
+  private var subscriptions = Set<AnyCancellable>()
+  
   
   // MARK: - Initialization
   
   override init(frame: CGRect) {
     super.init(frame: frame)
     configure()
+    binding()
   }
   
   required init?(coder: NSCoder) {
@@ -66,8 +69,7 @@ extension FlipItem {
   
   override func layoutSubviews() {
     super.layoutSubviews()
-    label.clipsToBounds = false // stackview 회전할 때 true값이 됨 (이유 모름)
-    configureLabelSize()
+    configureLabelStyles()
   }
 }
 
@@ -88,13 +90,30 @@ extension FlipItem {
       make.edges.equalToSuperview()
     }
     
-    backgroundColor = .black
+    backgroundColor = UserDefaults.standard.isThemeConfigured ? .init(rgb: UserDefaults.standard.clockBackgroundColorTheme) : .black
   }
   
   
   /// 플립 시계의 폰트 크기를 상위뷰에 맞추어 설정합니다.
-  private func configureLabelSize() {
+  private func configureLabelStyles() {
+    label.clipsToBounds = false // stackview 회전할 때 true값이 됨 (이유 모름)
     label.font = .systemFont(ofSize: bounds.width * 0.6, weight: .bold)
+  }
+  
+  private func binding() {
+    UserDefaults.standard
+      .publisher(for: \.clockBackgroundColorTheme)
+      .sink { [weak self] in
+        self?.backgroundColor = .init(rgb: $0)
+      }
+      .store(in: &subscriptions)
+    
+    UserDefaults.standard
+      .publisher(for: \.textColorTheme)
+      .sink { [weak self] in
+        self?.label.textColor = .init(rgb: $0)
+      }
+      .store(in: &subscriptions)
   }
 }
 
@@ -242,7 +261,7 @@ extension FlipItem {
       x: 0,
       y: 0,
       width: previousTextBottomView.frame.width,
-      height: previousTextBottomView.frame.height * 0.8
+      height: previousTextBottomView.frame.height
     )
     
     previousTextBottomView.layer.addSublayer(bottomShadowLayer)
@@ -277,7 +296,7 @@ extension FlipItem {
       .init(name: .easeIn),
       .init(name: .linear)
     ]
-    animation.duration = topAnimationDuration + bottomAnimationDuration - 0.2
+    animation.duration = topAnimationDuration + bottomAnimationDuration
     
     
     bottomShadowLayer.add(animation, forKey: "shadowAnimation")

@@ -24,6 +24,13 @@ class MainCoordinator: NSObject, Coordinator {
     let vc = ViewController()
     vc.coordinator = self
     navigationController.pushViewController(vc, animated: false)
+    
+    // 테마 설정 안되어 있다면 설정할 수 있도록 보여줌
+    if !UserDefaults.standard.isThemeConfigured {
+      let themeVC = ThemeViewController()
+      themeVC.modalPresentationStyle = .fullScreen
+      vc.present(themeVC, animated: true)
+    }
   }
   
   
@@ -55,7 +62,6 @@ extension MainCoordinator: UINavigationControllerDelegate {
     didShow viewController: UIViewController,
     animated: Bool
   ) {
-    
     guard let fromVC = navigationController.transitionCoordinator?.viewController(forKey: .from) else {
       return
     }
@@ -67,7 +73,5 @@ extension MainCoordinator: UINavigationControllerDelegate {
     if let settingVC = fromVC as? SettingsViewController {
       childDidFinish(settingVC.coordinator)
     }
-    
-    
   }
 }

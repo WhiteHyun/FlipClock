@@ -5,6 +5,7 @@
 //  Created by 홍승현 on 2022/07/06.
 //
 
+import Combine
 import UIKit
 
 import SnapKit
@@ -17,11 +18,15 @@ class FlipView: UIView {
   
   private lazy var item = FlipItem()
   
+  private lazy var line = UIView()
+  
   var time: String? {
     didSet {
       item.text = time
     }
   }
+  
+  private var subscriptions = Set<AnyCancellable>()
   
   
   // MARK: - Initialization
@@ -29,6 +34,7 @@ class FlipView: UIView {
   override init(frame: CGRect) {
     super.init(frame: frame)
     configure()
+    binding()
   }
   
   required init?(coder: NSCoder) {
@@ -42,18 +48,25 @@ extension FlipView {
   
   private func configure() {
     addSubview(item)
+    addSubview(line)
+    
     item.snp.makeConstraints { make in
       make.edges.equalToSuperview()
     }
     
-    let line = UIView().then {
-      $0.backgroundColor = .lightGray
-    }
-    addSubview(line)
     line.snp.makeConstraints { make in
-      make.height.equalTo(5)
+      make.height.equalTo(3)
       make.centerY.equalToSuperview()
       make.leading.trailing.equalToSuperview()
     }
+  }
+  
+  private func binding() {
+    UserDefaults.standard
+      .publisher(for: \.backgroundColorTheme)
+      .sink { [weak self] in
+        self?.line.backgroundColor = .init(rgb: $0)
+      }
+      .store(in: &subscriptions)
   }
 }
