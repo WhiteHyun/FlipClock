@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BA6D0F6528AE217900F1EF31 /* FlipItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA6D0F6428AE217900F1EF31 /* FlipItemViewModel.swift */; };
 		BA77EF882898F03F005CF4F6 /* SettingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA77EF872898F03F005CF4F6 /* SettingTableViewCell.swift */; };
 		BA77EF8A2898F4E4005CF4F6 /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA77EF892898F4E4005CF4F6 /* SettingsViewModel.swift */; };
 		BA77EF8D28995550005CF4F6 /* ThemeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA77EF8C28995550005CF4F6 /* ThemeViewController.swift */; };
@@ -32,6 +33,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		BA6D0F6428AE217900F1EF31 /* FlipItemViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlipItemViewModel.swift; sourceTree = "<group>"; };
 		BA77EF872898F03F005CF4F6 /* SettingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingTableViewCell.swift; sourceTree = "<group>"; };
 		BA77EF892898F4E4005CF4F6 /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
 		BA77EF8C28995550005CF4F6 /* ThemeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeViewController.swift; sourceTree = "<group>"; };
@@ -86,6 +88,7 @@
 			children = (
 				BA77EF892898F4E4005CF4F6 /* SettingsViewModel.swift */,
 				BA77EF90289A21FC005CF4F6 /* ThemeViewModel.swift */,
+				BA6D0F6428AE217900F1EF31 /* FlipItemViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -243,6 +246,7 @@
 				BA95DE0B28671BDD00041A30 /* AppDelegate.swift in Sources */,
 				BA77EF93289A23D8005CF4F6 /* ThemeTableViewCell.swift in Sources */,
 				BA95DE0D28671BDD00041A30 /* SceneDelegate.swift in Sources */,
+				BA6D0F6528AE217900F1EF31 /* FlipItemViewModel.swift in Sources */,
 				BA77EF91289A21FC005CF4F6 /* ThemeViewModel.swift in Sources */,
 				BA7ECC312875A04D00511694 /* SettingCoordinator.swift in Sources */,
 				BAB686C3289AD754007D9F77 /* UserDefaults.swift in Sources */,
