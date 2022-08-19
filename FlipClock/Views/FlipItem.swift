@@ -23,6 +23,9 @@ class FlipItem: UIView {
     $0.text = "00"
   }
   
+  let viewModel = FlipitemViewModel()
+  let animationViewModel = FlipAnimationViewModel()
+  
   /// Flippable label Text
   var text: String? {
     get {
@@ -35,11 +38,6 @@ class FlipItem: UIView {
       startAnimations()
     }
   }
-  
-  // Flip되는 시간 설정
-  private let topAnimationDuration: CFTimeInterval = 0.4
-  private let bottomAnimationDuration: CFTimeInterval = 0.2
-  
   
   private var previousTextTopView: UIView!
   private var previousTextBottomView: UIView!
@@ -125,7 +123,6 @@ extension FlipItem {
   /// label에 Flip할 이미지를 넣는 작업을 수행합니다.
   /// - Parameter newText: 변경될 텍스트
   private func updateWithText(_ newText: String) {
-    
     let (previousTextTopView, previousTextBottomView) = createLabelImages()
     
     label.text = newText
@@ -184,162 +181,23 @@ extension FlipItem {
 
 extension FlipItem {
   private func startAnimations() {
-    shadowAnimation()
-    topLabelFlippingAnimation()
-    bottomShadowAnimation()
-  }
-  
-  /// 윗 부분과 아랫부분 글자의 그림자 애니메이션을 추가합니다.
-  private func shadowAnimation() {
-    let topViewShadow = UIView(frame: previousTextTopView.bounds)
-    topViewShadow.backgroundColor = .black
-    topViewShadow.alpha = 0
-    topViewShadow.layer.cornerRadius = 15
+    // 윗 부분과 아랫부분 글자의 그림자 애니메이션을 추가합니다.
+    animationViewModel.shadowAnimation(previousTextTopView, alpha: 0.3)
+    animationViewModel.shadowAnimation(previousTextBottomView, alpha: 0.2)
     
-    previousTextTopView.addSubview(topViewShadow)
-    
-    let bottomViewShadow = UIView(frame: previousTextBottomView.bounds)
-    bottomViewShadow.backgroundColor = .black
-    bottomViewShadow.alpha = 0
-    bottomViewShadow.layer.cornerRadius = 15
-    
-    previousTextBottomView.addSubview(bottomViewShadow)
-    
-    UIView.animate(withDuration: topAnimationDuration) {
-      topViewShadow.alpha = 0.3
+    animationViewModel.flipAnimation(previousTextTopView, type: .top) { [unowned self] in
+      self.nextTextBottomView.isHidden = false
+      self.animationViewModel.flipAnimation(self.nextTextBottomView, type: .bottom) {
+        self.stopAnimations()
+      }
     }
     
-    UIView.animate(withDuration: topAnimationDuration) {
-      bottomViewShadow.alpha = 0.2
-    }
+    animationViewModel.bottomShadowAnimation(previousTextBottomView)
   }
   
   
-  /// 윗 부분의 Flip 애니메이션을 진행합니다.
-  private func topLabelFlippingAnimation() {
-    
-    // 기준점 가운데 하단으로 설정
-    previousTextTopView.layer.anchorPoint = CGPoint(x: 0.5, y: 1)
-    
-    // 기준점 변경으로 인한 center값 조정 (layer Position)
-    previousTextTopView.center = CGPoint(
-      x: previousTextTopView.frame.width * 0.5,
-      y: previousTextTopView.frame.height
-    )
-    
-    
-    let topAnimation = CABasicAnimation(keyPath: "transform.rotation.x")
-    topAnimation.duration = topAnimationDuration // 애니메이션 시간
-    topAnimation.fromValue = 0 // 0부터
-    topAnimation.toValue = Double.pi * 0.5 // 90도 까지
-    topAnimation.delegate = self
-    
-    topAnimation.fillMode = .forwards // 애니메이션 끝난 뒤 변경상태 유지
-    topAnimation.timingFunction = .init(name: .easeIn)
-    
-    topAnimation.setValue("End", forKey: "topAnimation") // key값 설정
-    
-    
-    
-    // 3D 변환행렬 이용하여 label 회전
-    var perspectiveTransform = CATransform3DIdentity
-    perspectiveTransform.m34 = 0.0025
-    perspectiveTransform = CATransform3DRotate(perspectiveTransform, .pi * 0.5, 1, 0, 0)
-    previousTextTopView.layer.transform = perspectiveTransform
-    
-    
-    previousTextTopView.layer.add(topAnimation, forKey: "topRotation") // 애니메이션 시작
-  }
   
-  
-  /// 위 Flip 이미지로 인한 그림자를 생성해주기 위한 애니메이션입니다.
-  private func bottomShadowAnimation() {
-    
-    let bottomShadowLayer = CAShapeLayer()
-    
-    let frame = CGRect(
-      x: 0,
-      y: 0,
-      width: previousTextBottomView.frame.width,
-      height: previousTextBottomView.frame.height
-    )
-    
-    previousTextBottomView.layer.addSublayer(bottomShadowLayer)
-    
-    
-    let path = UIBezierPath()
-    path.move(to: .zero)
-    path.addLine(to: CGPoint(x: frame.width, y: 0.0))
-    path.addLine(to: CGPoint(x: frame.width, y: 0.0))
-    path.close()
-    
-    
-    bottomShadowLayer.opacity = 0.3
-    bottomShadowLayer.frame = frame
-    
-    
-    let endPath = UIBezierPath()
-    endPath.move(to: .zero)
-    endPath.addLine(to: CGPoint(x: frame.width, y: 0.0))
-    endPath.addLine(to: CGPoint(x: frame.width, y: frame.height))
-    endPath.addLine(to: CGPoint(x: 0.0, y: frame.height))
-    endPath.close()
-    
-    
-    let animation = CAKeyframeAnimation(keyPath: "path")
-    animation.values = [
-      path.cgPath,
-      endPath.cgPath
-    ]
-    
-    animation.timingFunctions = [
-      .init(name: .easeIn),
-      .init(name: .linear)
-    ]
-    animation.duration = topAnimationDuration + bottomAnimationDuration
-    
-    
-    bottomShadowLayer.add(animation, forKey: "shadowAnimation")
-  }
-  
-  
-  /// 아랫부분 이미지의 Flip 애니메이션을 진행합니다.
-  private func bottomLabelFlippingAnimation() {
-    
-    nextTextBottomView.isHidden = false
-    
-    nextTextBottomView.layer.anchorPoint = CGPoint(x: 0.5, y: 0)
-    nextTextBottomView.center = CGPoint(
-      x: nextTextBottomView.frame.width * 0.5,
-      y: nextTextBottomView.frame.height
-    )
-    
-    
-    let bottomAnimation = CABasicAnimation(keyPath:"transform.rotation.x")
-    bottomAnimation.duration = bottomAnimationDuration
-    bottomAnimation.fromValue = Double.pi * 0.5
-    bottomAnimation.toValue = 0
-    bottomAnimation.delegate = self
-    
-    bottomAnimation.fillMode = .forwards
-    bottomAnimation.isRemovedOnCompletion = false // 애니메이션 끝난 뒤 깜빡이는 현상 수정
-    bottomAnimation.timingFunction = .init(name: .linear)
-    
-    bottomAnimation.setValue("End", forKey: "bottomAnimation")
-    
-    
-    var perspectiveTransform = CATransform3DIdentity
-    perspectiveTransform.m34 = -1 / 340
-    perspectiveTransform = CATransform3DRotate(perspectiveTransform, .pi * 0.5, 1, 0, 0)
-    nextTextBottomView.layer.transform = perspectiveTransform
-    
-    
-    nextTextBottomView.layer.add(bottomAnimation, forKey: "bottomRotation")
-  }
-  
-  
-  /// 모든 애니메이션을 중지시키고, 애니메이션 이미지를 삭제합니다.
-  func stopAnimations() {
+  private func stopAnimations() {
     if nextTextBottomView != nil {
       nextTextBottomView.layer.removeAllAnimations()
       nextTextBottomView.removeFromSuperview()
@@ -359,19 +217,5 @@ extension FlipItem {
     }
     
     label.layer.sublayers = nil
-  }
-}
-
-
-extension FlipItem: CAAnimationDelegate {
-  
-  
-  func animationDidStop(_ anim: CAAnimation, finished flag: Bool) {
-    if flag && anim.value(forKey: "topAnimation") != nil {
-      bottomLabelFlippingAnimation()
-    }
-    else if !flag || anim.value(forKey: "bottomAnimation") != nil {
-      stopAnimations()
-    }
   }
 }
