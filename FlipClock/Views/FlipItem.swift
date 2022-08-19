@@ -195,25 +195,20 @@ extension FlipItem {
     animationViewModel.bottomShadowAnimation(previousTextBottomView)
   }
   
-  
-  
   private func stopAnimations() {
     if nextTextBottomView != nil {
       nextTextBottomView.layer.removeAllAnimations()
       nextTextBottomView.removeFromSuperview()
-      nextTextBottomView = nil
     }
     
     if previousTextTopView != nil {
       previousTextTopView.layer.removeAllAnimations()
       previousTextTopView.removeFromSuperview()
-      previousTextTopView = nil
     }
     
     if previousTextBottomView != nil {
       previousTextBottomView.layer.removeAllAnimations()
       previousTextBottomView.removeFromSuperview()
-      previousTextBottomView = nil
     }
     
     label.layer.sublayers = nil
