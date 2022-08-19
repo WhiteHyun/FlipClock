@@ -26,23 +26,10 @@ class FlipItem: UIView {
   let viewModel = FlipitemViewModel()
   let animationViewModel = FlipAnimationViewModel()
   
-  /// Flippable label Text
-  var text: String? {
-    get {
-      return label.text
-    }
-    
-    set {
-      guard let value = newValue, label.text != newValue else { return }
-      updateWithText(value)
-      startAnimations()
-    }
-  }
   
-  private var previousTextTopView: UIView!
-  private var previousTextBottomView: UIView!
-  
-  private var nextTextBottomView: UIView!
+  private var previousTextTopView = UIView()
+  private var previousTextBottomView = UIView()
+  private var nextTextBottomView = UIView()
   
   private var subscriptions = Set<AnyCancellable>()
   
@@ -91,7 +78,6 @@ extension FlipItem {
     backgroundColor = UserDefaults.standard.isThemeConfigured ? .init(rgb: UserDefaults.standard.clockBackgroundColorTheme) : .black
   }
   
-  
   /// 플립 시계의 폰트 크기를 상위뷰에 맞추어 설정합니다.
   private func configureLabelStyles() {
     label.clipsToBounds = false // stackview 회전할 때 true값이 됨 (이유 모름)
@@ -112,70 +98,25 @@ extension FlipItem {
         self?.label.textColor = .init(rgb: $0)
       }
       .store(in: &subscriptions)
+    
+    viewModel.$text
+      .dropFirst()
+      .filter { [unowned self] in self.label.text != $0 }
+      .compactMap { $0 }
+      .map { [unowned self] in viewModel.updateWithText(self, label: self.label, newText: $0) }
+      .sink { [unowned self] in
+        self.previousTextTopView = $0.prevTop
+        self.previousTextBottomView = $0.prevBottom
+        self.nextTextBottomView = $0.nextBottom
+        
+        [$0.prevTop, $0.prevBottom, $0.nextBottom].forEach {
+          self.label.addSubview($0)
+        }
+        self.startAnimations()
+      }
+      .store(in: &subscriptions)
   }
 }
-
-// MARK: - Custom Functions
-
-extension FlipItem {
-  
-  /// Flip Animation을 하기 전에 불리는 메소드입니다.
-  /// label에 Flip할 이미지를 넣는 작업을 수행합니다.
-  /// - Parameter newText: 변경될 텍스트
-  private func updateWithText(_ newText: String) {
-    let (previousTextTopView, previousTextBottomView) = createLabelImages()
-    
-    label.text = newText
-    
-    let nextTextBottomView = createLabelImages().bottom
-    
-    self.nextTextBottomView = nextTextBottomView
-    self.previousTextTopView = previousTextTopView
-    self.previousTextBottomView = previousTextBottomView
-    
-    [previousTextTopView, previousTextBottomView, nextTextBottomView].forEach {
-      label.addSubview($0)
-    }
-    nextTextBottomView.isHidden = true // topView의 애니메이션 완료 후 보여질 예정
-  }
-  
-  
-  /// 현재 `label`을 위 아래 절반으로 자른 이미지로 반환합니다.
-  /// - Returns: 윗 부분과 아랫부분의 레이블 이미지
-  private func createLabelImages() -> (top: UIView, bottom: UIView) {
-    
-    // 현재 label의 이미지 값을 도출
-    UIGraphicsBeginImageContextWithOptions(bounds.size, false, 0)
-    layer.render(in: UIGraphicsGetCurrentContext()!)
-    let image = UIGraphicsGetImageFromCurrentImageContext()!
-    UIGraphicsEndImageContext()
-    
-    // label 높이의 절반 크기로 설정
-    let snapshotSize = CGSize(width: image.size.width, height: image.size.height * 0.5)
-    
-    
-    // 윗부분을 이미지로 가져옴
-    UIGraphicsBeginImageContextWithOptions(snapshotSize, false, 0)
-    image.draw(at: .zero)
-    let topSnapshotImage = UIGraphicsGetImageFromCurrentImageContext()!
-    UIGraphicsEndImageContext()
-    
-    // 아랫부분을 이미지로 가져옴
-    UIGraphicsBeginImageContextWithOptions(snapshotSize, false, 0)
-    image.draw(at: CGPoint(x: 0, y: -image.size.height * 0.5))
-    let bottomSnapshotImage = UIGraphicsGetImageFromCurrentImageContext()!
-    UIGraphicsEndImageContext()
-    
-    let topView = UIImageView(image: topSnapshotImage)
-    let bottomView = UIImageView(image: bottomSnapshotImage)
-    
-    // bottomimageView를 밑에 둚
-    bottomView.frame.origin.y = snapshotSize.height
-    
-    return (topView, bottomView)
-  }
-}
-
 
 // MARK: - Animations
 
@@ -196,20 +137,14 @@ extension FlipItem {
   }
   
   private func stopAnimations() {
-    if nextTextBottomView != nil {
-      nextTextBottomView.layer.removeAllAnimations()
-      nextTextBottomView.removeFromSuperview()
-    }
+    nextTextBottomView.layer.removeAllAnimations()
+    nextTextBottomView.removeFromSuperview()
     
-    if previousTextTopView != nil {
-      previousTextTopView.layer.removeAllAnimations()
-      previousTextTopView.removeFromSuperview()
-    }
+    previousTextTopView.layer.removeAllAnimations()
+    previousTextTopView.removeFromSuperview()
     
-    if previousTextBottomView != nil {
-      previousTextBottomView.layer.removeAllAnimations()
-      previousTextBottomView.removeFromSuperview()
-    }
+    previousTextBottomView.layer.removeAllAnimations()
+    previousTextBottomView.removeFromSuperview()
     
     label.layer.sublayers = nil
   }
