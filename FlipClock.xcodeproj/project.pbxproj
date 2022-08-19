@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		BA6D0F6528AE217900F1EF31 /* FlipItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA6D0F6428AE217900F1EF31 /* FlipItemViewModel.swift */; };
+		BA6D0F6728AE30B500F1EF31 /* FlipAnimationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA6D0F6628AE30B500F1EF31 /* FlipAnimationViewModel.swift */; };
 		BA77EF882898F03F005CF4F6 /* SettingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA77EF872898F03F005CF4F6 /* SettingTableViewCell.swift */; };
 		BA77EF8A2898F4E4005CF4F6 /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA77EF892898F4E4005CF4F6 /* SettingsViewModel.swift */; };
 		BA77EF8D28995550005CF4F6 /* ThemeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA77EF8C28995550005CF4F6 /* ThemeViewController.swift */; };
@@ -34,6 +35,7 @@
 
 /* Begin PBXFileReference section */
 		BA6D0F6428AE217900F1EF31 /* FlipItemViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlipItemViewModel.swift; sourceTree = "<group>"; };
+		BA6D0F6628AE30B500F1EF31 /* FlipAnimationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlipAnimationViewModel.swift; sourceTree = "<group>"; };
 		BA77EF872898F03F005CF4F6 /* SettingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingTableViewCell.swift; sourceTree = "<group>"; };
 		BA77EF892898F4E4005CF4F6 /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
 		BA77EF8C28995550005CF4F6 /* ThemeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeViewController.swift; sourceTree = "<group>"; };
@@ -89,6 +91,7 @@
 				BA77EF892898F4E4005CF4F6 /* SettingsViewModel.swift */,
 				BA77EF90289A21FC005CF4F6 /* ThemeViewModel.swift */,
 				BA6D0F6428AE217900F1EF31 /* FlipItemViewModel.swift */,
+				BA6D0F6628AE30B500F1EF31 /* FlipAnimationViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -252,6 +255,7 @@
 				BAB686C3289AD754007D9F77 /* UserDefaults.swift in Sources */,
 				BA7ECC2928757D4200511694 /* Coordinator.swift in Sources */,
 				BA7ECC2E28759CB200511694 /* SettingsViewController.swift in Sources */,
+				BA6D0F6728AE30B500F1EF31 /* FlipAnimationViewModel.swift in Sources */,
 				BA77EF8A2898F4E4005CF4F6 /* SettingsViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
