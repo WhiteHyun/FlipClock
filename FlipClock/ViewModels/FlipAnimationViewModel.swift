@@ -107,7 +107,7 @@ struct FlipAnimationViewModel {
       .init(name: .easeIn),
       .init(name: .linear)
     ]
-    animation.duration = FlipAnimationViewModel.FlipType.top.duration + FlipAnimationViewModel.FlipType.bottom.duration
+    animation.duration = FlipType.top.duration + FlipType.bottom.duration
     
     
     bottomShadowLayer.add(animation, forKey: "shadowAnimation")
