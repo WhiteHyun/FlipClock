@@ -22,7 +22,7 @@ class FlipView: UIView {
   
   var time: String? {
     didSet {
-      item.text = time
+      item.viewModel.text = time
     }
   }
   
