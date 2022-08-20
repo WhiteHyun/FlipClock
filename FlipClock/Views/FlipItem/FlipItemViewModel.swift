@@ -12,26 +12,7 @@ import UIKit
 class FlipitemViewModel {
   
   /// Flippable label Text
-  @Published var text: String? {
-    didSet {
-      updateTexts(old: oldValue, new: text)
-    }
-  }
-  
-  @Published var newValue: String?
-  @Published var oldValue: String?
-  
-  
-  private func updateTexts(old: String?, new: String?) {
-    guard old != new else { return }
-    oldValue = old
-    newValue = new
-  }
-}
-
-
-extension FlipitemViewModel {
-  
+  @Published var text: String?
   
   /// Flip Animation을 하기 전에 불리는 메소드입니다.
   /// label에 Flip할 이미지를 넣는 작업을 수행합니다.
