@@ -103,7 +103,7 @@ extension FlipItem {
       .dropFirst()
       .filter { [unowned self] in self.label.text != $0 }
       .compactMap { $0 }
-      .map { [unowned self] in viewModel.updateWithText(self, label: self.label, newText: $0) }
+      .map { [unowned self] in viewModel.createSnapshots(self, label: self.label, newText: $0) }
       .sink { [unowned self] in
         self.previousTextTopView = $0.prevTop
         self.previousTextBottomView = $0.prevBottom

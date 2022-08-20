@@ -14,10 +14,15 @@ class FlipitemViewModel {
   /// Flippable label Text
   @Published var text: String?
   
-  /// Flip Animation을 하기 전에 불리는 메소드입니다.
-  /// label에 Flip할 이미지를 넣는 작업을 수행합니다.
+  /// Flip할 이미지를 만듭니다.
+  ///
+  /// 파라미터로 들어온 **newText**로 인해서 두 번쨰 파라미터인 label의 값이 새로이 갱신됩니다.
+  ///
+  /// - Parameter view: label을 감싸고 있는 view
+  /// - Parameter label: 숫자가 들어간 label
   /// - Parameter newText: 변경될 텍스트
-  func updateWithText(_ view: UIView, label: UILabel, newText: String) -> (prevTop: UIView, prevBottom: UIView, nextBottom: UIView) {
+  /// - Returns: 변경 전 플립시계 이미지 윗부분과 아랫부분, 변경된 플립시계 이미지 아랫부분
+  func createSnapshots(_ view: UIView, label: UILabel, newText: String) -> (prevTop: UIView, prevBottom: UIView, nextBottom: UIView) {
     let (previousTextTopView, previousTextBottomView) = createLabelImages(view)
     
     label.text = newText
@@ -30,7 +35,7 @@ class FlipitemViewModel {
   }
   
   
-  /// 현재 `label`을 위 아래 절반으로 자른 이미지로 반환합니다.
+  /// `view`를 위 아래 절반으로 자른 이미지로 반환합니다.
   /// - Returns: 윗 부분과 아랫부분의 레이블 이미지
   private func createLabelImages(_ view: UIView) -> (top: UIView, bottom: UIView) {
     
