@@ -76,24 +76,14 @@
 		BA5FBB0E28796B1A00209EDD /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				BA95DE1E28671EFA00041A30 /* FlipItem.swift */,
-				BA7ECC222875293100511694 /* FlipView.swift */,
-				BA7ECC2428754CA600511694 /* FlipClockView.swift */,
-				BA77EF872898F03F005CF4F6 /* SettingTableViewCell.swift */,
-				BA77EF92289A23D8005CF4F6 /* ThemeTableViewCell.swift */,
+				BA95DE0E28671BDD00041A30 /* ViewController.swift */,
+				BAC6AEB328B075F7004F01BF /* FlipItem */,
+				BAC6AEB428B0760A004F01BF /* FlipView */,
+				BAC6AEB528B07615004F01BF /* FlipClockView */,
+				BAC6AEB628B07656004F01BF /* SettingsVC */,
+				BAC6AEB728B07665004F01BF /* ThemeVC */,
 			);
 			path = Views;
-			sourceTree = "<group>";
-		};
-		BA77EF8B2898F4E8005CF4F6 /* ViewModels */ = {
-			isa = PBXGroup;
-			children = (
-				BA77EF892898F4E4005CF4F6 /* SettingsViewModel.swift */,
-				BA77EF90289A21FC005CF4F6 /* ThemeViewModel.swift */,
-				BA6D0F6428AE217900F1EF31 /* FlipItemViewModel.swift */,
-				BA6D0F6628AE30B500F1EF31 /* FlipAnimationViewModel.swift */,
-			);
-			path = ViewModels;
 			sourceTree = "<group>";
 		};
 		BA7ECC2C28757F1500511694 /* Coordinators */ = {
@@ -105,16 +95,6 @@
 				BA7ECC302875A04D00511694 /* SettingCoordinator.swift */,
 			);
 			path = Coordinators;
-			sourceTree = "<group>";
-		};
-		BA7ECC2F28759CB600511694 /* ViewControllers */ = {
-			isa = PBXGroup;
-			children = (
-				BA95DE0E28671BDD00041A30 /* ViewController.swift */,
-				BA7ECC2D28759CB200511694 /* SettingsViewController.swift */,
-				BA77EF8C28995550005CF4F6 /* ThemeViewController.swift */,
-			);
-			path = ViewControllers;
 			sourceTree = "<group>";
 		};
 		BA95DDFE28671BDD00041A30 = {
@@ -141,8 +121,6 @@
 				BA95DE0C28671BDD00041A30 /* SceneDelegate.swift */,
 				BA7ECC2C28757F1500511694 /* Coordinators */,
 				BA5FBB0E28796B1A00209EDD /* Views */,
-				BA77EF8B2898F4E8005CF4F6 /* ViewModels */,
-				BA7ECC2F28759CB600511694 /* ViewControllers */,
 				BA95DE1328671BDE00041A30 /* Assets.xcassets */,
 				BA95DE1528671BDE00041A30 /* LaunchScreen.storyboard */,
 				BA95DE1828671BDE00041A30 /* Info.plist */,
@@ -157,6 +135,52 @@
 				BAB686C2289AD754007D9F77 /* UserDefaults.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		BAC6AEB328B075F7004F01BF /* FlipItem */ = {
+			isa = PBXGroup;
+			children = (
+				BA6D0F6428AE217900F1EF31 /* FlipItemViewModel.swift */,
+				BA6D0F6628AE30B500F1EF31 /* FlipAnimationViewModel.swift */,
+				BA95DE1E28671EFA00041A30 /* FlipItem.swift */,
+			);
+			path = FlipItem;
+			sourceTree = "<group>";
+		};
+		BAC6AEB428B0760A004F01BF /* FlipView */ = {
+			isa = PBXGroup;
+			children = (
+				BA7ECC222875293100511694 /* FlipView.swift */,
+			);
+			path = FlipView;
+			sourceTree = "<group>";
+		};
+		BAC6AEB528B07615004F01BF /* FlipClockView */ = {
+			isa = PBXGroup;
+			children = (
+				BA7ECC2428754CA600511694 /* FlipClockView.swift */,
+			);
+			path = FlipClockView;
+			sourceTree = "<group>";
+		};
+		BAC6AEB628B07656004F01BF /* SettingsVC */ = {
+			isa = PBXGroup;
+			children = (
+				BA77EF872898F03F005CF4F6 /* SettingTableViewCell.swift */,
+				BA77EF892898F4E4005CF4F6 /* SettingsViewModel.swift */,
+				BA7ECC2D28759CB200511694 /* SettingsViewController.swift */,
+			);
+			path = SettingsVC;
+			sourceTree = "<group>";
+		};
+		BAC6AEB728B07665004F01BF /* ThemeVC */ = {
+			isa = PBXGroup;
+			children = (
+				BA77EF92289A23D8005CF4F6 /* ThemeTableViewCell.swift */,
+				BA77EF90289A21FC005CF4F6 /* ThemeViewModel.swift */,
+				BA77EF8C28995550005CF4F6 /* ThemeViewController.swift */,
+			);
+			path = ThemeVC;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
