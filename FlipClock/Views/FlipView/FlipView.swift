@@ -5,9 +5,10 @@
 //  Created by 홍승현 on 2022/07/06.
 //
 
-import Combine
 import UIKit
 
+import RxCocoa
+import RxSwift
 import SnapKit
 import Then
 
@@ -19,13 +20,13 @@ final class FlipView: UIView {
 
   private lazy var line = UIView()
 
-  var time: String? {
+  var time: String = "" {
     didSet {
-      item.viewModel.text = time
+      item.viewModel.text.accept(time)
     }
   }
 
-  private var subscriptions = Set<AnyCancellable>()
+  private let disposeBag = DisposeBag()
 
   // MARK: - Initialization
 
@@ -60,11 +61,12 @@ extension FlipView {
   }
 
   private func binding() {
-    UserDefaults.standard
-      .publisher(for: \.backgroundColorTheme)
-      .sink { [weak self] in
+    UserDefaults.standard.rx
+      .observeWeakly(Int.self, "backgroundColorTheme")
+      .compactMap { $0 }
+      .subscribe(onNext: { [weak self] in
         self?.line.backgroundColor = .init(rgb: $0)
-      }
-      .store(in: &subscriptions)
+      })
+      .disposed(by: disposeBag)
   }
 }

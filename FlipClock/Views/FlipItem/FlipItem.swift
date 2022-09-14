@@ -8,6 +8,8 @@
 import Combine
 import UIKit
 
+import RxCocoa
+import RxSwift
 import SnapKit
 import Then
 
@@ -28,7 +30,7 @@ final class FlipItem: UIView {
   private var previousTextBottomView = UIView()
   private var nextTextBottomView = UIView()
 
-  private var subscriptions = Set<AnyCancellable>()
+  var disposeBag = DisposeBag()
 
   // MARK: - Initialization
 
@@ -81,26 +83,28 @@ extension FlipItem {
   }
 
   private func binding() {
-    UserDefaults.standard
-      .publisher(for: \.clockBackgroundColorTheme)
-      .sink { [weak self] in
-        self?.backgroundColor = .init(rgb: $0)
-      }
-      .store(in: &subscriptions)
 
-    UserDefaults.standard
-      .publisher(for: \.textColorTheme)
-      .sink { [weak self] in
-        self?.label.textColor = .init(rgb: $0)
-      }
-      .store(in: &subscriptions)
-
-    viewModel.$text
-      .dropFirst()
-      .filter { [unowned self] in self.label.text != $0 }
+    UserDefaults.standard.rx
+      .observeWeakly(Int.self, "clockBackgroundColorTheme")
       .compactMap { $0 }
+      .subscribe(onNext: { [weak self] in
+        self?.backgroundColor = .init(rgb: $0)
+      })
+      .disposed(by: disposeBag)
+
+    UserDefaults.standard.rx
+      .observeWeakly(Int.self, "textColorTheme")
+      .compactMap { $0 }
+      .subscribe(onNext: { [weak self] in
+        self?.label.textColor = .init(rgb: $0)
+      })
+      .disposed(by: disposeBag)
+
+    viewModel.text
+      .skip(1)
+      .filter { [unowned self] in self.label.text != $0 }
       .map { [unowned self] in viewModel.createSnapshots(self, label: self.label, newText: $0) }
-      .sink { [unowned self] in
+      .subscribe(onNext: { [unowned self] in
         self.previousTextTopView = $0.previousTopView
         self.previousTextBottomView = $0.previousBottomView
         self.nextTextBottomView = $0.nextBottomView
@@ -109,8 +113,8 @@ extension FlipItem {
           self.label.addSubview($0)
         }
         self.startAnimations()
-      }
-      .store(in: &subscriptions)
+      })
+      .disposed(by: disposeBag)
   }
 }
 
