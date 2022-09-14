@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BA3CFB6128D2074400F097E1 /* SnapShotModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA3CFB6028D2074400F097E1 /* SnapShotModel.swift */; };
 		BA6D0F6528AE217900F1EF31 /* FlipItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA6D0F6428AE217900F1EF31 /* FlipItemViewModel.swift */; };
 		BA6D0F6728AE30B500F1EF31 /* FlipAnimationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA6D0F6628AE30B500F1EF31 /* FlipAnimationViewModel.swift */; };
 		BA77EF882898F03F005CF4F6 /* SettingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA77EF872898F03F005CF4F6 /* SettingTableViewCell.swift */; };
@@ -34,6 +35,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		BA3CFB6028D2074400F097E1 /* SnapShotModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnapShotModel.swift; sourceTree = "<group>"; };
 		BA6D0F6428AE217900F1EF31 /* FlipItemViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlipItemViewModel.swift; sourceTree = "<group>"; };
 		BA6D0F6628AE30B500F1EF31 /* FlipAnimationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlipAnimationViewModel.swift; sourceTree = "<group>"; };
 		BA77EF872898F03F005CF4F6 /* SettingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingTableViewCell.swift; sourceTree = "<group>"; };
@@ -141,6 +143,7 @@
 			isa = PBXGroup;
 			children = (
 				BA6D0F6428AE217900F1EF31 /* FlipItemViewModel.swift */,
+				BA3CFB6028D2074400F097E1 /* SnapShotModel.swift */,
 				BA6D0F6628AE30B500F1EF31 /* FlipAnimationViewModel.swift */,
 				BA95DE1E28671EFA00041A30 /* FlipItem.swift */,
 			);
@@ -193,6 +196,7 @@
 				BA95DE0328671BDD00041A30 /* Sources */,
 				BA95DE0428671BDD00041A30 /* Frameworks */,
 				BA95DE0528671BDD00041A30 /* Resources */,
+				BABBAA1028B762860063E7BB /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -256,6 +260,26 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		BABBAA1028B762860063E7BB /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "export PATH=\"$PATH:/opt/homebrew/bin\"\nif which swiftlint >/dev/null; then\n    if [ \"$CONFIGURATION\" ]; then\n        HOOKS_PATH=$(git config --get core.hooksPath)\n        if [ \".githooks\" != \"$HOOKS_PATH\" ]; then\n            git config core.hooksPath .githooks\n        fi\n    fi\n    swiftlint --fix && swiftlint\nelse\n    echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi \n\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		BA95DE0328671BDD00041A30 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -278,6 +302,7 @@
 				BA7ECC312875A04D00511694 /* SettingCoordinator.swift in Sources */,
 				BAB686C3289AD754007D9F77 /* UserDefaults.swift in Sources */,
 				BA7ECC2928757D4200511694 /* Coordinator.swift in Sources */,
+				BA3CFB6128D2074400F097E1 /* SnapShotModel.swift in Sources */,
 				BA7ECC2E28759CB200511694 /* SettingsViewController.swift in Sources */,
 				BA6D0F6728AE30B500F1EF31 /* FlipAnimationViewModel.swift in Sources */,
 				BA77EF8A2898F4E4005CF4F6 /* SettingsViewModel.swift in Sources */,

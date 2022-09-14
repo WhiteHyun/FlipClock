@@ -7,19 +7,18 @@
 
 import UIKit
 
-class ThemeCoordinator: Coordinator {
-  
+final class ThemeCoordinator: Coordinator {
+
   var childCoordinators: [Coordinator] = []
   var navigationController: UINavigationController
-  
+
   init(navigationController: UINavigationController) {
     self.navigationController = navigationController
   }
-  
-  
+
   func start() {
-    let vc = ThemeViewController()
-    vc.coordinator = self
-    navigationController.viewControllers.last?.present(vc, animated: true)
+    let themeVC = ThemeViewController()
+    themeVC.coordinator = self
+    navigationController.viewControllers.last?.present(themeVC, animated: true)
   }
 }
