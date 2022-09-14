@@ -87,22 +87,20 @@ extension FlipItem {
     UserDefaults.standard.rx
       .observeWeakly(Int.self, "clockBackgroundColorTheme")
       .compactMap { $0 }
-      .subscribe(onNext: { [weak self] in
-        self?.backgroundColor = .init(rgb: $0)
-      })
+      .map { UIColor.init(rgb: $0) }
+      .bind(to: self.rx.backgroundColor)
       .disposed(by: disposeBag)
 
     UserDefaults.standard.rx
       .observeWeakly(Int.self, "textColorTheme")
       .compactMap { $0 }
-      .subscribe(onNext: { [weak self] in
-        self?.label.textColor = .init(rgb: $0)
-      })
+      .map { UIColor.init(rgb: $0) }
+      .bind(to: self.label.rx.textColor)
       .disposed(by: disposeBag)
 
     viewModel.text
       .skip(1)
-      .filter { [unowned self] in self.label.text != $0 }
+      .distinctUntilChanged()
       .map { [unowned self] in viewModel.createSnapshots(self, label: self.label, newText: $0) }
       .subscribe(onNext: { [unowned self] in
         self.previousTextTopView = $0.previousTopView

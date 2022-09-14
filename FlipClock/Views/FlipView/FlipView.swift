@@ -64,9 +64,8 @@ extension FlipView {
     UserDefaults.standard.rx
       .observeWeakly(Int.self, "backgroundColorTheme")
       .compactMap { $0 }
-      .subscribe(onNext: { [weak self] in
-        self?.line.backgroundColor = .init(rgb: $0)
-      })
+      .map { UIColor.init(rgb: $0) }
+      .bind(to: self.line.rx.backgroundColor)
       .disposed(by: disposeBag)
   }
 }
