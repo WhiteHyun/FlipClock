@@ -5,9 +5,10 @@
 //  Created by 홍승현 on 2022/06/25.
 //
 
-import Combine
 import UIKit
 
+import RxSwift
+import RxCocoa
 import SnapKit
 import Then
 
@@ -16,7 +17,7 @@ final class ViewController: UIViewController {
   weak var coordinator: MainCoordinator?
 
   private lazy var clockView = FlipClockView()
-  private var subscriptions = Set<AnyCancellable>()
+  private let disposeBag = DisposeBag()
 
   // MARK: - Life Cycle
 
@@ -60,12 +61,12 @@ extension ViewController {
   }
 
   private func binding() {
-    UserDefaults.standard
-      .publisher(for: \.backgroundColorTheme)
-      .sink { [weak self] in
-        self?.view.backgroundColor = .init(rgb: $0)
-      }
-      .store(in: &subscriptions)
+    UserDefaults.standard.rx
+      .observeWeakly(Int.self, "backgroundColorTheme")
+      .compactMap { $0 }
+      .map { UIColor.init(rgb: $0) }
+      .bind(to: self.view.rx.backgroundColor)
+      .disposed(by: disposeBag)
   }
 
   @objc func settingButtonDidTapped() {

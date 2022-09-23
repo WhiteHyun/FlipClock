@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		BA3CFB6128D2074400F097E1 /* SnapShotModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA3CFB6028D2074400F097E1 /* SnapShotModel.swift */; };
+		BA3CFB6428D20C4200F097E1 /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = BA3CFB6328D20C4200F097E1 /* RxCocoa */; };
+		BA3CFB6628D20C4200F097E1 /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = BA3CFB6528D20C4200F097E1 /* RxSwift */; };
 		BA6D0F6528AE217900F1EF31 /* FlipItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA6D0F6428AE217900F1EF31 /* FlipItemViewModel.swift */; };
 		BA6D0F6728AE30B500F1EF31 /* FlipAnimationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA6D0F6628AE30B500F1EF31 /* FlipAnimationViewModel.swift */; };
 		BA77EF882898F03F005CF4F6 /* SettingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA77EF872898F03F005CF4F6 /* SettingTableViewCell.swift */; };
@@ -67,7 +69,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BA3CFB6428D20C4200F097E1 /* RxCocoa in Frameworks */,
 				BA7ECC1E287473F000511694 /* SnapKit in Frameworks */,
+				BA3CFB6628D20C4200F097E1 /* RxSwift in Frameworks */,
 				BA7ECC2128747BBD00511694 /* Then in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -206,6 +210,8 @@
 			packageProductDependencies = (
 				BA7ECC1D287473F000511694 /* SnapKit */,
 				BA7ECC2028747BBD00511694 /* Then */,
+				BA3CFB6328D20C4200F097E1 /* RxCocoa */,
+				BA3CFB6528D20C4200F097E1 /* RxSwift */,
 			);
 			productName = FlipClock;
 			productReference = BA95DE0728671BDD00041A30 /* FlipClock.app */;
@@ -238,6 +244,7 @@
 			packageReferences = (
 				BA7ECC1C287473F000511694 /* XCRemoteSwiftPackageReference "SnapKit" */,
 				BA7ECC1F28747BBD00511694 /* XCRemoteSwiftPackageReference "Then" */,
+				BA3CFB6228D20C4200F097E1 /* XCRemoteSwiftPackageReference "RxSwift" */,
 			);
 			productRefGroup = BA95DE0828671BDD00041A30 /* Products */;
 			projectDirPath = "";
@@ -517,6 +524,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		BA3CFB6228D20C4200F097E1 /* XCRemoteSwiftPackageReference "RxSwift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ReactiveX/RxSwift";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
 		BA7ECC1C287473F000511694 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
@@ -536,6 +551,16 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		BA3CFB6328D20C4200F097E1 /* RxCocoa */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BA3CFB6228D20C4200F097E1 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxCocoa;
+		};
+		BA3CFB6528D20C4200F097E1 /* RxSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BA3CFB6228D20C4200F097E1 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxSwift;
+		};
 		BA7ECC1D287473F000511694 /* SnapKit */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = BA7ECC1C287473F000511694 /* XCRemoteSwiftPackageReference "SnapKit" */;

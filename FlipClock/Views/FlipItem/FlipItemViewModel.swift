@@ -5,13 +5,14 @@
 //  Created by 홍승현 on 2022/08/18.
 //
 
-import Combine
 import UIKit
+
+import RxCocoa
 
 final class FlipitemViewModel {
 
   /// Flippable label Text
-  @Published var text: String?
+  let text = BehaviorRelay(value: "")
 
   /// Flip할 이미지를 만듭니다.
   ///

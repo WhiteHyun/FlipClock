@@ -7,61 +7,53 @@
 
 import UIKit
 
-final class ThemeViewController: UITableViewController {
+import RxSwift
+import RxCocoa
+import SnapKit
+import Then
+
+final class ThemeViewController: UIViewController {
 
   weak var coordinator: ThemeCoordinator?
-  let viewModel = ThemeViewModel()
+  private let viewModel = ThemeViewModel()
+  private let disposeBag = DisposeBag()
+
+  private lazy var tableView = UITableView().then {
+    $0.separatorStyle = .none
+    $0.register(ThemeTableViewCell.self, forCellReuseIdentifier: ThemeTableViewCell.id)
+  }
 
   override func viewDidLoad() {
     super.viewDidLoad()
     configureUI()
-    configureTableView()
+    binding()
   }
 
   private func configureUI() {
     view.backgroundColor = .systemBackground
-  }
+    view.addSubview(tableView)
 
-  private func configureTableView() {
-    tableView.separatorStyle = .none
-    tableView.dataSource = self
-    tableView.delegate = self
-    tableView.register(ThemeTableViewCell.self, forCellReuseIdentifier: ThemeTableViewCell.id)
-  }
-}
-
-// MARK: - UITableViewDataSource
-
-extension ThemeViewController {
-  override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return viewModel.numberOfRowsInSection
-  }
-
-  override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    guard let cell = tableView.dequeueReusableCell(
-      withIdentifier: ThemeTableViewCell.id,
-      for: indexPath
-    ) as? ThemeTableViewCell,
-          let image = viewModel.clockThemes[indexPath.row]
-    else {
-      fatalError("Error!")
+    tableView.snp.makeConstraints { make in
+      make.edges.equalToSuperview()
     }
-
-    cell.configure(with: image)
-
-    return cell
-  }
-}
-
-// MARK: - UITableViewDelegate
-
-extension ThemeViewController {
-  override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-    return 230
   }
 
-  override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-    viewModel.userDefaults(storeWith: indexPath.row)
-    dismiss(animated: true)
+  private func binding() {
+    viewModel.data
+      .bind(to: tableView.rx.items(
+        cellIdentifier: ThemeTableViewCell.id,
+        cellType: ThemeTableViewCell.self
+      )) { _, element, cell in
+        guard let element = element else { return }
+        cell.configure(with: element)
+      }
+      .disposed(by: disposeBag)
+
+    tableView.rx.itemSelected
+      .subscribe(onNext: { [weak self] in
+        self?.viewModel.userDefaults(storeWith: $0.row)
+        self?.dismiss(animated: true)
+      })
+      .disposed(by: disposeBag)
   }
 }
