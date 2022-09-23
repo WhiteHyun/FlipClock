@@ -32,6 +32,7 @@
 		BA95DE1428671BDE00041A30 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BA95DE1328671BDE00041A30 /* Assets.xcassets */; };
 		BA95DE1728671BDE00041A30 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BA95DE1528671BDE00041A30 /* LaunchScreen.storyboard */; };
 		BA95DE1F28671EFA00041A30 /* FlipItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA95DE1E28671EFA00041A30 /* FlipItem.swift */; };
+		BAA57DDD28DDFBE500F10197 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAA57DDC28DDFBE500F10197 /* Theme.swift */; };
 		BAB686C1289AC3F3007D9F77 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAB686C0289AC3F3007D9F77 /* UIColor.swift */; };
 		BAB686C3289AD754007D9F77 /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAB686C2289AD754007D9F77 /* UserDefaults.swift */; };
 /* End PBXBuildFile section */
@@ -60,6 +61,7 @@
 		BA95DE1628671BDE00041A30 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BA95DE1828671BDE00041A30 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BA95DE1E28671EFA00041A30 /* FlipItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlipItem.swift; sourceTree = "<group>"; };
+		BAA57DDC28DDFBE500F10197 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		BAB686C0289AC3F3007D9F77 /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
 		BAB686C2289AD754007D9F77 /* UserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaults.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -137,6 +139,7 @@
 		BAB686BE289AC322007D9F77 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				BAA57DDC28DDFBE500F10197 /* Theme.swift */,
 				BAB686C0289AC3F3007D9F77 /* UIColor.swift */,
 				BAB686C2289AD754007D9F77 /* UserDefaults.swift */,
 			);
@@ -270,6 +273,7 @@
 /* Begin PBXShellScriptBuildPhase section */
 		BABBAA1028B762860063E7BB /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
 			buildActionMask = 2147483647;
 			files = (
 			);
@@ -307,6 +311,7 @@
 				BA6D0F6528AE217900F1EF31 /* FlipItemViewModel.swift in Sources */,
 				BA77EF91289A21FC005CF4F6 /* ThemeViewModel.swift in Sources */,
 				BA7ECC312875A04D00511694 /* SettingCoordinator.swift in Sources */,
+				BAA57DDD28DDFBE500F10197 /* Theme.swift in Sources */,
 				BAB686C3289AD754007D9F77 /* UserDefaults.swift in Sources */,
 				BA7ECC2928757D4200511694 /* Coordinator.swift in Sources */,
 				BA3CFB6128D2074400F097E1 /* SnapShotModel.swift in Sources */,
