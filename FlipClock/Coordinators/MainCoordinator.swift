@@ -23,13 +23,6 @@ final class MainCoordinator: NSObject, Coordinator {
     let homeVC = ViewController()
     homeVC.coordinator = self
     navigationController.pushViewController(homeVC, animated: false)
-
-    // 테마 설정 안되어 있다면 설정할 수 있도록 보여줌
-    if !UserDefaults.standard.isThemeConfigured {
-      let themeVC = ThemeViewController()
-      themeVC.modalPresentationStyle = .fullScreen
-      homeVC.present(themeVC, animated: true)
-    }
   }
 
   func moveToSetting() {

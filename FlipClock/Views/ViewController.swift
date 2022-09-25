@@ -61,10 +61,8 @@ extension ViewController {
   }
 
   private func binding() {
-    UserDefaults.standard.rx
-      .observeWeakly(Int.self, "backgroundColorTheme")
-      .compactMap { $0 }
-      .map { UIColor.init(rgb: $0) }
+    Theme.currentTheme
+      .map { UIColor(rgb: $0.colors.background) }
       .bind(to: self.view.rx.backgroundColor)
       .disposed(by: disposeBag)
   }

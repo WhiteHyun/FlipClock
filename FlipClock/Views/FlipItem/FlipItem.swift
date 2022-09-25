@@ -69,10 +69,6 @@ extension FlipItem {
     label.snp.makeConstraints { make in
       make.edges.equalToSuperview()
     }
-
-    backgroundColor = UserDefaults.standard.isThemeConfigured
-    ? .init(rgb: UserDefaults.standard.clockBackgroundColorTheme)
-    : .black
   }
 
   /// 플립 시계의 폰트 크기를 상위뷰에 맞추어 설정합니다.
@@ -83,17 +79,13 @@ extension FlipItem {
 
   private func binding() {
 
-    UserDefaults.standard.rx
-      .observeWeakly(Int.self, "clockBackgroundColorTheme")
-      .compactMap { $0 }
-      .map { UIColor.init(rgb: $0) }
+    Theme.currentTheme
+      .map { UIColor(rgb: $0.colors.clockBackground) }
       .bind(to: self.rx.backgroundColor)
       .disposed(by: disposeBag)
 
-    UserDefaults.standard.rx
-      .observeWeakly(Int.self, "textColorTheme")
-      .compactMap { $0 }
-      .map { UIColor.init(rgb: $0) }
+    Theme.currentTheme
+      .map { UIColor(rgb: $0.colors.text) }
       .bind(to: self.label.rx.textColor)
       .disposed(by: disposeBag)
 

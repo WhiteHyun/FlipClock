@@ -51,7 +51,7 @@ final class ThemeViewController: UIViewController {
 
     tableView.rx.itemSelected
       .subscribe(onNext: { [weak self] in
-        self?.viewModel.userDefaults(storeWith: $0.row)
+        self?.viewModel.store(with: $0.row)
         self?.dismiss(animated: true)
       })
       .disposed(by: disposeBag)

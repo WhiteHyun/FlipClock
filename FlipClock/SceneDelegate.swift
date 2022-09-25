@@ -7,8 +7,12 @@
 
 import UIKit
 
+import RxSwift
+import RxCocoa
+
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
+  let disposeBag = DisposeBag()
   var window: UIWindow?
   var coordinator: MainCoordinator?
 
@@ -27,5 +31,18 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     window?.makeKeyAndVisible()
 
     coordinator?.start()
+
+    // MARK: - UserDefaults Observation
+
+    UserDefaults.standard.rx
+      .observeWeakly(Int.self, "theme")
+      .compactMap { $0 }
+      .map { Theme(rawValue: $0) }
+      .compactMap { $0 }
+      .subscribe(onNext: {
+        Theme.currentTheme.accept($0)
+      })
+      .disposed(by: disposeBag)
+
   }
 }
