@@ -13,7 +13,7 @@ enum Theme: Int {
   case dark
   case light
   
-  static let currentTheme = BehaviorRelay<Int>(value: UserDefaults.standard.theme)
+  static let currentTheme = BehaviorRelay<Theme>(value: Theme(rawValue: UserDefaults.standard.theme) ?? .dark)
 
   var colors: HexColor {
     switch self {
