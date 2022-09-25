@@ -19,6 +19,6 @@ final class ThemeCoordinator: Coordinator {
   func start() {
     let themeVC = ThemeViewController()
     themeVC.coordinator = self
-    navigationController.viewControllers.last?.present(themeVC, animated: true)
+    navigationController.pushViewController(themeVC, animated: true)
   }
 }
