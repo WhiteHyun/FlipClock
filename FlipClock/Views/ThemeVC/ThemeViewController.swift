@@ -18,6 +18,7 @@ final class ThemeViewController: UIViewController {
   private let viewModel = ThemeViewModel()
 
   private lazy var tableView = UITableView(frame: .zero, style: .insetGrouped).then {
+    $0.register(ThemeHeaderView.self, forHeaderFooterViewReuseIdentifier: ThemeHeaderView.id)
     $0.register(ThemeTableViewCell.self, forCellReuseIdentifier: ThemeTableViewCell.id)
     $0.dataSource = self
     $0.delegate = self
@@ -71,5 +72,15 @@ extension ThemeViewController: UITableViewDelegate {
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     viewModel.store(with: indexPath.row)
     tableView.reloadData()
+  }
+
+  func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+    guard let headerView = tableView.dequeueReusableHeaderFooterView(
+      withIdentifier: ThemeHeaderView.id
+    ) as? ThemeHeaderView else {
+      return nil
+    }
+
+    return headerView
   }
 }
