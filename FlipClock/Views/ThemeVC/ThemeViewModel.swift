@@ -11,14 +11,10 @@ import RxSwift
 
 struct ThemeViewModel {
 
-  private let clockThemes = [
+  let clockThemes = [
     "흑",
     "백"
   ]
-
-  var data: Observable<[String]> {
-    return Observable.just(clockThemes)
-  }
 
   func store(with index: Int) {
     UserDefaults.standard.theme = index

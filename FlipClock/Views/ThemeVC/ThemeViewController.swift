@@ -16,10 +16,11 @@ final class ThemeViewController: UIViewController {
 
   var coordinator: ThemeCoordinator?
   private let viewModel = ThemeViewModel()
-  private let disposeBag = DisposeBag()
 
   private lazy var tableView = UITableView(frame: .zero, style: .insetGrouped).then {
     $0.register(ThemeTableViewCell.self, forCellReuseIdentifier: ThemeTableViewCell.id)
+    $0.dataSource = self
+    $0.delegate = self
   }
 
   // MARK: - Life Cycle
@@ -27,7 +28,6 @@ final class ThemeViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     configureUI()
-    binding()
   }
 
   // MARK: - Configuration
@@ -40,23 +40,36 @@ final class ThemeViewController: UIViewController {
       make.edges.equalToSuperview()
     }
   }
+}
 
-  private func binding() {
-    viewModel.data
-      .bind(to: tableView.rx.items(
-        cellIdentifier: ThemeTableViewCell.id,
-        cellType: ThemeTableViewCell.self
-      )) { index, element, cell in
-        cell.accessoryType = UserDefaults.standard.theme == index ? .checkmark : .none
-        cell.configure(with: element)
-      }
-      .disposed(by: disposeBag)
+// MARK: - UITableViewDataSource
 
-    tableView.rx.itemSelected
-      .subscribe(onNext: { [weak self] in
-        self?.viewModel.store(with: $0.row)
-        self?.tableView.reloadData()
-      })
-      .disposed(by: disposeBag)
+extension ThemeViewController: UITableViewDataSource {
+
+  func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    return viewModel.clockThemes.count
+  }
+
+  func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    guard let cell = tableView.dequeueReusableCell(
+      withIdentifier: ThemeTableViewCell.id,
+      for: indexPath
+    ) as? ThemeTableViewCell else {
+      fatalError()
+    }
+
+    cell.accessoryType = UserDefaults.standard.theme == indexPath.row ? .checkmark : .none
+    cell.configure(with: viewModel.clockThemes[indexPath.row])
+    return cell
+  }
+
+}
+
+// MARK: - UITableViewDelegate
+
+extension ThemeViewController: UITableViewDelegate {
+  func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    viewModel.store(with: indexPath.row)
+    tableView.reloadData()
   }
 }
