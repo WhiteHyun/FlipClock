@@ -22,11 +22,15 @@ final class ThemeViewController: UIViewController {
     $0.register(ThemeTableViewCell.self, forCellReuseIdentifier: ThemeTableViewCell.id)
   }
 
+  // MARK: - Life Cycle
+
   override func viewDidLoad() {
     super.viewDidLoad()
     configureUI()
     binding()
   }
+
+  // MARK: - Configuration
 
   private func configureUI() {
     view.backgroundColor = .systemBackground
@@ -50,7 +54,7 @@ final class ThemeViewController: UIViewController {
     tableView.rx.itemSelected
       .subscribe(onNext: { [weak self] in
         self?.viewModel.store(with: $0.row)
-        self?.dismiss(animated: true)
+        self?.navigationController?.popViewController(animated: true)
       })
       .disposed(by: disposeBag)
   }
