@@ -46,7 +46,8 @@ final class ThemeViewController: UIViewController {
       .bind(to: tableView.rx.items(
         cellIdentifier: ThemeTableViewCell.id,
         cellType: ThemeTableViewCell.self
-      )) { _, element, cell in
+      )) { index, element, cell in
+        cell.accessoryType = UserDefaults.standard.theme == index ? .checkmark : .none
         cell.configure(with: element)
       }
       .disposed(by: disposeBag)
@@ -54,7 +55,7 @@ final class ThemeViewController: UIViewController {
     tableView.rx.itemSelected
       .subscribe(onNext: { [weak self] in
         self?.viewModel.store(with: $0.row)
-        self?.navigationController?.popViewController(animated: true)
+        self?.tableView.reloadData()
       })
       .disposed(by: disposeBag)
   }
