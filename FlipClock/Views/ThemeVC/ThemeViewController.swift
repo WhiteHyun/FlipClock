@@ -14,7 +14,7 @@ import Then
 
 final class ThemeViewController: UIViewController {
 
-  weak var coordinator: ThemeCoordinator?
+  var coordinator: ThemeCoordinator?
   private let viewModel = ThemeViewModel()
   private let disposeBag = DisposeBag()
 
