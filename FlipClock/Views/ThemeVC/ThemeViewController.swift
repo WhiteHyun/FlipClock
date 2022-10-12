@@ -44,7 +44,6 @@ final class ThemeViewController: UIViewController {
         cellIdentifier: ThemeTableViewCell.id,
         cellType: ThemeTableViewCell.self
       )) { _, element, cell in
-        guard let element = element else { return }
         cell.configure(with: element)
       }
       .disposed(by: disposeBag)

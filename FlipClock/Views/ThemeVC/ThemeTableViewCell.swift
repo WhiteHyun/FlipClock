@@ -14,12 +14,8 @@ final class ThemeTableViewCell: UITableViewCell {
 
   static let id = "ThemeTableViewCell"
 
-  private lazy var themeImageView = UIImageView().then {
-    $0.contentMode = .scaleAspectFit
-    $0.layer.shadowOffset = CGSize(width: 5, height: 5)
-    $0.layer.shadowOpacity = 0.7
-    $0.layer.shadowRadius = 5
-    $0.layer.shadowColor = UIColor.gray.cgColor
+  private lazy var themeLabel = UILabel().then {
+    $0.font = .systemFont(ofSize: 17)
   }
 
   override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -32,14 +28,14 @@ final class ThemeTableViewCell: UITableViewCell {
   }
 
   private func configure() {
-    contentView.addSubview(themeImageView)
+    contentView.addSubview(themeLabel)
 
-    themeImageView.snp.makeConstraints { make in
+    themeLabel.snp.makeConstraints { make in
       make.edges.equalToSuperview().inset(20)
     }
   }
 
-  func configure(with image: UIImage) {
-    themeImageView.image = image
+  func configure(with text: String) {
+    themeLabel.text = text
   }
 }

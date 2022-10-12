@@ -11,9 +11,12 @@ import RxSwift
 
 struct ThemeViewModel {
 
-  private let clockThemes = [UIImage(named: "theme1"), UIImage(named: "theme2")]
+  private let clockThemes = [
+    "흑",
+    "백"
+  ]
 
-  var data: Observable<[UIImage?]> {
+  var data: Observable<[String]> {
     return Observable.just(clockThemes)
   }
 
