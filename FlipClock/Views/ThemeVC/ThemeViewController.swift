@@ -18,8 +18,7 @@ final class ThemeViewController: UIViewController {
   private let viewModel = ThemeViewModel()
   private let disposeBag = DisposeBag()
 
-  private lazy var tableView = UITableView().then {
-    $0.separatorStyle = .none
+  private lazy var tableView = UITableView(frame: .zero, style: .insetGrouped).then {
     $0.register(ThemeTableViewCell.self, forCellReuseIdentifier: ThemeTableViewCell.id)
   }
 
