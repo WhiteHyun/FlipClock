@@ -30,11 +30,13 @@ final class ViewController: UIViewController {
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
     clockView.start()
+    UIApplication.shared.isIdleTimerDisabled = true
   }
 
   override func viewWillDisappear(_ animated: Bool) {
     super.viewWillDisappear(animated)
     clockView.stop()
+    UIApplication.shared.isIdleTimerDisabled = false
   }
 }
 
