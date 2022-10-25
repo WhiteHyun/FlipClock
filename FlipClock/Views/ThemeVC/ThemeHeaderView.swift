@@ -17,6 +17,15 @@ final class ThemeHeaderView: UITableViewHeaderFooterView {
   static let id = "ThemeHeaderView"
   private let disposeBag = DisposeBag()
 
+  private let clockBackgroundView = UIView().then {
+    $0.layer.shadowRadius = 5
+    $0.layer.shadowOpacity = 0.4
+    $0.layer.shadowOffset = CGSize(width: 0, height: 4)
+    $0.layer.shadowColor = UIColor.lightGray.cgColor
+    $0.clipsToBounds = false
+    $0.layer.cornerRadius = 15
+  }
+
   private let containerView = UIStackView().then {
     $0.alignment = .center
     $0.distribution = .fillEqually
@@ -34,6 +43,7 @@ final class ThemeHeaderView: UITableViewHeaderFooterView {
     super.init(reuseIdentifier: reuseIdentifier)
     setupLayouts()
     setupConstraints()
+    setupStyles()
     bind()
   }
 
@@ -42,15 +52,22 @@ final class ThemeHeaderView: UITableViewHeaderFooterView {
   }
 
   private func setupLayouts() {
-    addSubview(containerView)
+    self.addSubview(clockBackgroundView)
+    self.clockBackgroundView.addSubview(containerView)
     exampleView.forEach {
       containerView.addArrangedSubview($0)
     }
   }
 
   private func setupConstraints() {
+
+    clockBackgroundView.snp.makeConstraints { make in
+      make.verticalEdges.equalToSuperview().inset(30)
+      make.horizontalEdges.equalToSuperview().inset(10)
+    }
+
     containerView.snp.makeConstraints { make in
-      make.edges.equalToSuperview().inset(30)
+      make.edges.equalToSuperview().inset(10)
     }
 
     exampleView.forEach { view in
@@ -59,15 +76,17 @@ final class ThemeHeaderView: UITableViewHeaderFooterView {
       }
     }
   }
-  
+
+  private func setupStyles() {
+    var config = UIBackgroundConfiguration.listPlainHeaderFooter()
+    config.backgroundColor = .clear
+    self.backgroundConfiguration = config
+  }
+
   private func bind() {
       Theme.currentTheme
         .map { UIColor(rgb: $0.colors.background) }
-        .subscribe(onNext: { [weak self] in
-          var backgroundConfig = UIBackgroundConfiguration.listPlainHeaderFooter()
-          backgroundConfig.backgroundColor = $0
-          self?.backgroundConfiguration = backgroundConfig
-        })
+        .bind(to: self.clockBackgroundView.rx.backgroundColor)
         .disposed(by: disposeBag)
   }
 }
