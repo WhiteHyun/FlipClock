@@ -7,12 +7,15 @@
 
 import UIKit
 
+import RxSwift
+import RxCocoa
 import SnapKit
 import Then
 
 final class ThemeHeaderView: UITableViewHeaderFooterView {
 
   static let id = "ThemeHeaderView"
+  private let disposeBag = DisposeBag()
 
   private let containerView = UIStackView().then {
     $0.alignment = .center
@@ -31,7 +34,7 @@ final class ThemeHeaderView: UITableViewHeaderFooterView {
     super.init(reuseIdentifier: reuseIdentifier)
     setupLayouts()
     setupConstraints()
-    setupStyles()
+    bind()
   }
 
   required init?(coder: NSCoder) {
@@ -56,10 +59,15 @@ final class ThemeHeaderView: UITableViewHeaderFooterView {
       }
     }
   }
-
-  private func setupStyles() {
-    var backgroundConfig = UIBackgroundConfiguration.listPlainHeaderFooter()
-    backgroundConfig.backgroundColor = .systemGray
-    backgroundConfiguration = backgroundConfig
+  
+  private func bind() {
+      Theme.currentTheme
+        .map { UIColor(rgb: $0.colors.background) }
+        .subscribe(onNext: { [weak self] in
+          var backgroundConfig = UIBackgroundConfiguration.listPlainHeaderFooter()
+          backgroundConfig.backgroundColor = $0
+          self?.backgroundConfiguration = backgroundConfig
+        })
+        .disposed(by: disposeBag)
   }
 }
