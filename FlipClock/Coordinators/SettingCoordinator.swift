@@ -7,20 +7,24 @@
 
 import UIKit
 
-class SettingCoordinator: Coordinator {
-  
+final class SettingCoordinator: Coordinator {
+
   var childCoordinators: [Coordinator] = []
   weak var parentCoordinator: MainCoordinator?
   var navigationController: UINavigationController
-  
-  
+
   init(navigationController: UINavigationController) {
     self.navigationController = navigationController
   }
-  
+
   func start() {
-    let vc = SettingsViewController()
-    vc.coordinator = self
-    navigationController.pushViewController(vc, animated: true)
+    let settingVC = SettingsViewController()
+    settingVC.coordinator = self
+    navigationController.pushViewController(settingVC, animated: true)
+  }
+
+  func moveToThemeVC() {
+    let child = ThemeCoordinator(navigationController: navigationController)
+    child.start()
   }
 }

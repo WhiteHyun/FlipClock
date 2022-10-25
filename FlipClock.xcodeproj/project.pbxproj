@@ -7,6 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BA3CFB6128D2074400F097E1 /* SnapShotModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA3CFB6028D2074400F097E1 /* SnapShotModel.swift */; };
+		BA3CFB6428D20C4200F097E1 /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = BA3CFB6328D20C4200F097E1 /* RxCocoa */; };
+		BA3CFB6628D20C4200F097E1 /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = BA3CFB6528D20C4200F097E1 /* RxSwift */; };
+		BA6D0F6528AE217900F1EF31 /* FlipItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA6D0F6428AE217900F1EF31 /* FlipItemViewModel.swift */; };
+		BA6D0F6728AE30B500F1EF31 /* FlipAnimationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA6D0F6628AE30B500F1EF31 /* FlipAnimationViewModel.swift */; };
+		BA77EF882898F03F005CF4F6 /* SettingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA77EF872898F03F005CF4F6 /* SettingTableViewCell.swift */; };
+		BA77EF8A2898F4E4005CF4F6 /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA77EF892898F4E4005CF4F6 /* SettingsViewModel.swift */; };
+		BA77EF8D28995550005CF4F6 /* ThemeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA77EF8C28995550005CF4F6 /* ThemeViewController.swift */; };
+		BA77EF8F289A0DEC005CF4F6 /* ThemeCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA77EF8E289A0DEC005CF4F6 /* ThemeCoordinator.swift */; };
+		BA77EF91289A21FC005CF4F6 /* ThemeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA77EF90289A21FC005CF4F6 /* ThemeViewModel.swift */; };
+		BA77EF93289A23D8005CF4F6 /* ThemeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA77EF92289A23D8005CF4F6 /* ThemeTableViewCell.swift */; };
 		BA7ECC1E287473F000511694 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = BA7ECC1D287473F000511694 /* SnapKit */; };
 		BA7ECC2128747BBD00511694 /* Then in Frameworks */ = {isa = PBXBuildFile; productRef = BA7ECC2028747BBD00511694 /* Then */; };
 		BA7ECC232875293100511694 /* FlipView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA7ECC222875293100511694 /* FlipView.swift */; };
@@ -21,9 +32,22 @@
 		BA95DE1428671BDE00041A30 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BA95DE1328671BDE00041A30 /* Assets.xcassets */; };
 		BA95DE1728671BDE00041A30 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BA95DE1528671BDE00041A30 /* LaunchScreen.storyboard */; };
 		BA95DE1F28671EFA00041A30 /* FlipItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA95DE1E28671EFA00041A30 /* FlipItem.swift */; };
+		BAA57DDD28DDFBE500F10197 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAA57DDC28DDFBE500F10197 /* Theme.swift */; };
+		BAA743E928F6E3C400B9A768 /* ThemeHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAA743E828F6E3C400B9A768 /* ThemeHeaderView.swift */; };
+		BAB686C1289AC3F3007D9F77 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAB686C0289AC3F3007D9F77 /* UIColor.swift */; };
+		BAB686C3289AD754007D9F77 /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAB686C2289AD754007D9F77 /* UserDefaults.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		BA3CFB6028D2074400F097E1 /* SnapShotModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnapShotModel.swift; sourceTree = "<group>"; };
+		BA6D0F6428AE217900F1EF31 /* FlipItemViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlipItemViewModel.swift; sourceTree = "<group>"; };
+		BA6D0F6628AE30B500F1EF31 /* FlipAnimationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlipAnimationViewModel.swift; sourceTree = "<group>"; };
+		BA77EF872898F03F005CF4F6 /* SettingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingTableViewCell.swift; sourceTree = "<group>"; };
+		BA77EF892898F4E4005CF4F6 /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
+		BA77EF8C28995550005CF4F6 /* ThemeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeViewController.swift; sourceTree = "<group>"; };
+		BA77EF8E289A0DEC005CF4F6 /* ThemeCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeCoordinator.swift; sourceTree = "<group>"; };
+		BA77EF90289A21FC005CF4F6 /* ThemeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeViewModel.swift; sourceTree = "<group>"; };
+		BA77EF92289A23D8005CF4F6 /* ThemeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeTableViewCell.swift; sourceTree = "<group>"; };
 		BA7ECC222875293100511694 /* FlipView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlipView.swift; sourceTree = "<group>"; };
 		BA7ECC2428754CA600511694 /* FlipClockView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlipClockView.swift; sourceTree = "<group>"; };
 		BA7ECC2828757D4200511694 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
@@ -38,6 +62,10 @@
 		BA95DE1628671BDE00041A30 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BA95DE1828671BDE00041A30 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BA95DE1E28671EFA00041A30 /* FlipItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlipItem.swift; sourceTree = "<group>"; };
+		BAA57DDC28DDFBE500F10197 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
+		BAA743E828F6E3C400B9A768 /* ThemeHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeHeaderView.swift; sourceTree = "<group>"; };
+		BAB686C0289AC3F3007D9F77 /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
+		BAB686C2289AD754007D9F77 /* UserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaults.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -45,7 +73,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BA3CFB6428D20C4200F097E1 /* RxCocoa in Frameworks */,
 				BA7ECC1E287473F000511694 /* SnapKit in Frameworks */,
+				BA3CFB6628D20C4200F097E1 /* RxSwift in Frameworks */,
 				BA7ECC2128747BBD00511694 /* Then in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -53,23 +83,28 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		BA5FBB0E28796B1A00209EDD /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				BA95DE0E28671BDD00041A30 /* ViewController.swift */,
+				BAC6AEB328B075F7004F01BF /* FlipItem */,
+				BAC6AEB428B0760A004F01BF /* FlipView */,
+				BAC6AEB528B07615004F01BF /* FlipClockView */,
+				BAC6AEB628B07656004F01BF /* SettingsVC */,
+				BAC6AEB728B07665004F01BF /* ThemeVC */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		BA7ECC2C28757F1500511694 /* Coordinators */ = {
 			isa = PBXGroup;
 			children = (
 				BA7ECC2828757D4200511694 /* Coordinator.swift */,
 				BA7ECC2A28757D8A00511694 /* MainCoordinator.swift */,
+				BA77EF8E289A0DEC005CF4F6 /* ThemeCoordinator.swift */,
 				BA7ECC302875A04D00511694 /* SettingCoordinator.swift */,
 			);
 			path = Coordinators;
-			sourceTree = "<group>";
-		};
-		BA7ECC2F28759CB600511694 /* ViewControllers */ = {
-			isa = PBXGroup;
-			children = (
-				BA95DE0E28671BDD00041A30 /* ViewController.swift */,
-				BA7ECC2D28759CB200511694 /* SettingsViewController.swift */,
-			);
-			path = ViewControllers;
 			sourceTree = "<group>";
 		};
 		BA95DDFE28671BDD00041A30 = {
@@ -91,10 +126,11 @@
 		BA95DE0928671BDD00041A30 /* FlipClock */ = {
 			isa = PBXGroup;
 			children = (
+				BAB686BE289AC322007D9F77 /* Extensions */,
 				BA95DE0A28671BDD00041A30 /* AppDelegate.swift */,
 				BA95DE0C28671BDD00041A30 /* SceneDelegate.swift */,
 				BA7ECC2C28757F1500511694 /* Coordinators */,
-				BA7ECC2F28759CB600511694 /* ViewControllers */,
+				BA5FBB0E28796B1A00209EDD /* Views */,
 				BA95DE1328671BDE00041A30 /* Assets.xcassets */,
 				BA95DE1528671BDE00041A30 /* LaunchScreen.storyboard */,
 				BA95DE1828671BDE00041A30 /* Info.plist */,
@@ -103,6 +139,64 @@
 				BA7ECC2428754CA600511694 /* FlipClockView.swift */,
 			);
 			path = FlipClock;
+			sourceTree = "<group>";
+		};
+		BAB686BE289AC322007D9F77 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				BAA57DDC28DDFBE500F10197 /* Theme.swift */,
+				BAB686C0289AC3F3007D9F77 /* UIColor.swift */,
+				BAB686C2289AD754007D9F77 /* UserDefaults.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		BAC6AEB328B075F7004F01BF /* FlipItem */ = {
+			isa = PBXGroup;
+			children = (
+				BA6D0F6428AE217900F1EF31 /* FlipItemViewModel.swift */,
+				BA3CFB6028D2074400F097E1 /* SnapShotModel.swift */,
+				BA6D0F6628AE30B500F1EF31 /* FlipAnimationViewModel.swift */,
+				BA95DE1E28671EFA00041A30 /* FlipItem.swift */,
+			);
+			path = FlipItem;
+			sourceTree = "<group>";
+		};
+		BAC6AEB428B0760A004F01BF /* FlipView */ = {
+			isa = PBXGroup;
+			children = (
+				BA7ECC222875293100511694 /* FlipView.swift */,
+			);
+			path = FlipView;
+			sourceTree = "<group>";
+		};
+		BAC6AEB528B07615004F01BF /* FlipClockView */ = {
+			isa = PBXGroup;
+			children = (
+				BA7ECC2428754CA600511694 /* FlipClockView.swift */,
+			);
+			path = FlipClockView;
+			sourceTree = "<group>";
+		};
+		BAC6AEB628B07656004F01BF /* SettingsVC */ = {
+			isa = PBXGroup;
+			children = (
+				BA77EF872898F03F005CF4F6 /* SettingTableViewCell.swift */,
+				BA77EF892898F4E4005CF4F6 /* SettingsViewModel.swift */,
+				BA7ECC2D28759CB200511694 /* SettingsViewController.swift */,
+			);
+			path = SettingsVC;
+			sourceTree = "<group>";
+		};
+		BAC6AEB728B07665004F01BF /* ThemeVC */ = {
+			isa = PBXGroup;
+			children = (
+				BAA743E828F6E3C400B9A768 /* ThemeHeaderView.swift */,
+				BA77EF92289A23D8005CF4F6 /* ThemeTableViewCell.swift */,
+				BA77EF90289A21FC005CF4F6 /* ThemeViewModel.swift */,
+				BA77EF8C28995550005CF4F6 /* ThemeViewController.swift */,
+			);
+			path = ThemeVC;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -115,6 +209,7 @@
 				BA95DE0328671BDD00041A30 /* Sources */,
 				BA95DE0428671BDD00041A30 /* Frameworks */,
 				BA95DE0528671BDD00041A30 /* Resources */,
+				BABBAA1028B762860063E7BB /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -124,6 +219,8 @@
 			packageProductDependencies = (
 				BA7ECC1D287473F000511694 /* SnapKit */,
 				BA7ECC2028747BBD00511694 /* Then */,
+				BA3CFB6328D20C4200F097E1 /* RxCocoa */,
+				BA3CFB6528D20C4200F097E1 /* RxSwift */,
 			);
 			productName = FlipClock;
 			productReference = BA95DE0728671BDD00041A30 /* FlipClock.app */;
@@ -156,6 +253,7 @@
 			packageReferences = (
 				BA7ECC1C287473F000511694 /* XCRemoteSwiftPackageReference "SnapKit" */,
 				BA7ECC1F28747BBD00511694 /* XCRemoteSwiftPackageReference "Then" */,
+				BA3CFB6228D20C4200F097E1 /* XCRemoteSwiftPackageReference "RxSwift" */,
 			);
 			productRefGroup = BA95DE0828671BDD00041A30 /* Products */;
 			projectDirPath = "";
@@ -178,21 +276,55 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		BABBAA1028B762860063E7BB /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "export PATH=\"$PATH:/opt/homebrew/bin\"\nif which swiftlint >/dev/null; then\n    if [ \"$CONFIGURATION\" ]; then\n        HOOKS_PATH=$(git config --get core.hooksPath)\n        if [ \".githooks\" != \"$HOOKS_PATH\" ]; then\n            git config core.hooksPath .githooks\n        fi\n    fi\n    swiftlint --fix && swiftlint\nelse\n    echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi \n\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		BA95DE0328671BDD00041A30 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BA77EF882898F03F005CF4F6 /* SettingTableViewCell.swift in Sources */,
 				BA7ECC232875293100511694 /* FlipView.swift in Sources */,
+				BA77EF8F289A0DEC005CF4F6 /* ThemeCoordinator.swift in Sources */,
+				BA77EF8D28995550005CF4F6 /* ThemeViewController.swift in Sources */,
 				BA7ECC2B28757D8A00511694 /* MainCoordinator.swift in Sources */,
 				BA95DE0F28671BDD00041A30 /* ViewController.swift in Sources */,
+				BAB686C1289AC3F3007D9F77 /* UIColor.swift in Sources */,
 				BA7ECC2528754CA600511694 /* FlipClockView.swift in Sources */,
 				BA95DE1F28671EFA00041A30 /* FlipItem.swift in Sources */,
 				BA95DE0B28671BDD00041A30 /* AppDelegate.swift in Sources */,
+				BA77EF93289A23D8005CF4F6 /* ThemeTableViewCell.swift in Sources */,
 				BA95DE0D28671BDD00041A30 /* SceneDelegate.swift in Sources */,
+				BA6D0F6528AE217900F1EF31 /* FlipItemViewModel.swift in Sources */,
+				BA77EF91289A21FC005CF4F6 /* ThemeViewModel.swift in Sources */,
 				BA7ECC312875A04D00511694 /* SettingCoordinator.swift in Sources */,
+				BAA57DDD28DDFBE500F10197 /* Theme.swift in Sources */,
+				BAB686C3289AD754007D9F77 /* UserDefaults.swift in Sources */,
 				BA7ECC2928757D4200511694 /* Coordinator.swift in Sources */,
+				BA3CFB6128D2074400F097E1 /* SnapShotModel.swift in Sources */,
 				BA7ECC2E28759CB200511694 /* SettingsViewController.swift in Sources */,
+				BAA743E928F6E3C400B9A768 /* ThemeHeaderView.swift in Sources */,
+				BA6D0F6728AE30B500F1EF31 /* FlipAnimationViewModel.swift in Sources */,
+				BA77EF8A2898F4E4005CF4F6 /* SettingsViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -404,6 +536,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		BA3CFB6228D20C4200F097E1 /* XCRemoteSwiftPackageReference "RxSwift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ReactiveX/RxSwift";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
 		BA7ECC1C287473F000511694 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
@@ -423,6 +563,16 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		BA3CFB6328D20C4200F097E1 /* RxCocoa */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BA3CFB6228D20C4200F097E1 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxCocoa;
+		};
+		BA3CFB6528D20C4200F097E1 /* RxSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BA3CFB6228D20C4200F097E1 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxSwift;
+		};
 		BA7ECC1D287473F000511694 /* SnapKit */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = BA7ECC1C287473F000511694 /* XCRemoteSwiftPackageReference "SnapKit" */;

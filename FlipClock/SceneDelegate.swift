@@ -7,27 +7,42 @@
 
 import UIKit
 
+import RxSwift
+import RxCocoa
+
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
+  let disposeBag = DisposeBag()
   var window: UIWindow?
   var coordinator: MainCoordinator?
 
-
-  func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
-    // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
-    // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
-    // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
+  func scene(
+    _ scene: UIScene,
+    willConnectTo session: UISceneSession,
+    options connectionOptions: UIScene.ConnectionOptions
+  ) {
     guard let scene = (scene as? UIWindowScene) else { return }
     window = UIWindow(windowScene: scene)
-    
-    let vc = UINavigationController()
-    coordinator = MainCoordinator(navigationController: vc)
-    
-    window?.rootViewController = vc
+
+    let navVC = UINavigationController()
+    coordinator = MainCoordinator(navigationController: navVC)
+
+    window?.rootViewController = navVC
     window?.makeKeyAndVisible()
-    
+
     coordinator?.start()
+
+    // MARK: - UserDefaults Observation
+
+    UserDefaults.standard.rx
+      .observeWeakly(Int.self, "theme")
+      .compactMap { $0 }
+      .map { Theme(rawValue: $0) }
+      .compactMap { $0 }
+      .subscribe(onNext: {
+        Theme.currentTheme.accept($0)
+      })
+      .disposed(by: disposeBag)
+
   }
-
 }
-
