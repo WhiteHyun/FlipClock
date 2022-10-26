@@ -7,32 +7,35 @@
 
 import UIKit
 
+import RxCocoa
+import RxSwift
 import SnapKit
 import Then
 
+final class FlipView: UIView {
 
-class FlipView: UIView {
-  
   // MARK: - Properties
-  
-  var type: FlipItemType = .seconds
-  
+
   private lazy var item = FlipItem()
-  
-  var time: String? {
+
+  private lazy var line = UIView()
+
+  var time: String = "" {
     didSet {
-      item.text = time
+      item.viewModel.text.accept(time)
     }
   }
-  
-  
+
+  private let disposeBag = DisposeBag()
+
   // MARK: - Initialization
-  
+
   override init(frame: CGRect) {
     super.init(frame: frame)
     configure()
+    binding()
   }
-  
+
   required init?(coder: NSCoder) {
     fatalError("init(coder:) has not been implemented")
   }
@@ -41,34 +44,26 @@ class FlipView: UIView {
 // MARK: - Configuration
 
 extension FlipView {
-  
+
   private func configure() {
     addSubview(item)
+    addSubview(line)
+
     item.snp.makeConstraints { make in
       make.edges.equalToSuperview()
     }
-    
-    let line = UIView().then {
-      $0.backgroundColor = .lightGray
-    }
-    addSubview(line)
+
     line.snp.makeConstraints { make in
-      make.height.equalTo(5)
+      make.height.equalTo(3)
       make.centerY.equalToSuperview()
       make.leading.trailing.equalToSuperview()
     }
   }
-}
 
-// MARK: - Enums
-
-extension FlipView {
-  
-  enum FlipItemType {
-    
-    case hours
-    case minutes
-    case seconds
+  private func binding() {
+    Theme.currentTheme
+      .map { UIColor(rgb: $0.colors.background) }
+      .bind(to: self.line.rx.backgroundColor)
+      .disposed(by: disposeBag)
   }
-  
 }
