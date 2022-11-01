@@ -21,12 +21,12 @@ final class SettingsViewController: BaseViewController {
     $0.register(SettingTableViewCell.self, forCellReuseIdentifier: SettingTableViewCell.id)
   }
   // MARK: - Configuration
-  
+
   override func setupLayouts() {
     super.setupLayouts()
     self.view.addSubview(tableView)
   }
-  
+
   override func setupConstraints() {
     super.setupConstraints()
     tableView.snp.makeConstraints { make in

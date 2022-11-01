@@ -22,9 +22,9 @@ final class ThemeViewController: BaseViewController {
     $0.dataSource = self
     $0.delegate = self
   }
-  
+
   // MARK: - Configuration
-  
+
   override func setupLayouts() {
     super.setupLayouts()
     self.view.addSubview(tableView)

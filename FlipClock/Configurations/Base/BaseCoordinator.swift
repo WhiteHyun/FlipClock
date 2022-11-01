@@ -11,11 +11,11 @@ class BaseCoordinator: NSObject, Coordinator {
   var childCoordinators: [Coordinator] = []
   var parentCoordinator: Coordinator?
   var navigationController: UINavigationController
-  
+
   init(navigationController: UINavigationController) {
     self.navigationController = navigationController
   }
-  
+
   func start() {
     fatalError("start() must be implemented")
   }

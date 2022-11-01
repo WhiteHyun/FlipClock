@@ -10,13 +10,13 @@ import class UIKit.UIViewController
 import class RxSwift.DisposeBag
 
 class BaseViewController: UIViewController {
-  
+
   /// A dispose bag. 각 ViewController에 종속적이다.
   final let disposeBag: DisposeBag = DisposeBag()
-  
+
   /// A coordinator used to navigate`ViewControllers`
   weak var coordinator: Coordinator?
-  
+
   override func viewDidLoad() {
     super.viewDidLoad()
     setupLayouts()
@@ -24,7 +24,7 @@ class BaseViewController: UIViewController {
     setupStyles()
     bind()
   }
-  
+
   /// UI 프로퍼티를 view에 할당합니다.
   ///
   /// ```
@@ -36,7 +36,7 @@ class BaseViewController: UIViewController {
   /// }
   /// ```
   func setupLayouts() { }
-  
+
   /// UI 프로퍼티의 제약조건을 설정합니다.
   ///
   /// ```
@@ -49,7 +49,7 @@ class BaseViewController: UIViewController {
   /// }
   /// ```
   func setupConstraints() { }
-  
+
   /// View와 관련된 Style을 설정합니다.
   ///
   /// ```
@@ -60,7 +60,7 @@ class BaseViewController: UIViewController {
   /// }
   /// ```
   func setupStyles() { self.view.backgroundColor = .systemBackground }
-  
+
   /// Action, State 스트림을 bind합니다.
   /// 예를들어, Button이 tap 되었을 때, 또는 tableView를 rx로 설정할 때 이용됩니다.
   ///

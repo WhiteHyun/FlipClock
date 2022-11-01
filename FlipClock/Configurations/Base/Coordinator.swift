@@ -18,15 +18,14 @@ protocol Coordinator: AnyObject {
   func remove(child: Coordinator)
 }
 
-
 extension Coordinator {
-  
+
   func start(child: Coordinator) {
     self.childCoordinators.append(child)
     child.parentCoordinator = self
     child.start()
   }
-  
+
   func remove(child: Coordinator) {
     self.childCoordinators = self.childCoordinators.filter { $0 !== child }
   }
