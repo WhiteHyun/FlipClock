@@ -8,9 +8,11 @@
 import UIKit
 
 final class AppCoordinator: BaseCoordinator {
-  
+
   override func start() {
     self.navigationController.delegate = self
+    let coordinator = HomeCoordinator(navigationController: self.navigationController)
+    self.start(child: coordinator)
   }
 }
 
