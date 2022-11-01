@@ -12,9 +12,8 @@ import RxCocoa
 import SnapKit
 import Then
 
-final class ThemeViewController: UIViewController {
+final class ThemeViewController: BaseViewController {
 
-  var coordinator: ThemeCoordinator?
   private let viewModel = ThemeViewModel()
 
   private lazy var tableView = UITableView(frame: .zero, style: .insetGrouped).then {
@@ -23,20 +22,16 @@ final class ThemeViewController: UIViewController {
     $0.dataSource = self
     $0.delegate = self
   }
-
-  // MARK: - Life Cycle
-
-  override func viewDidLoad() {
-    super.viewDidLoad()
-    configureUI()
+  
+  // MARK: - Configuration
+  
+  override func setupLayouts() {
+    super.setupLayouts()
+    self.view.addSubview(tableView)
   }
 
-  // MARK: - Configuration
-
-  private func configureUI() {
-    view.backgroundColor = .systemBackground
-    view.addSubview(tableView)
-
+  override func setupConstraints() {
+    super.setupConstraints()
     tableView.snp.makeConstraints { make in
       make.edges.equalToSuperview()
     }
