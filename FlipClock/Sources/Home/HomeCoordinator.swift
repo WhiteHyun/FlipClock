@@ -16,7 +16,7 @@ final class HomeCoordinator: BaseCoordinator {
   }
 
   func moveToSetting() {
-    let coordinator = SettingCoordinator(navigationController: navigationController)
+    let coordinator = SettingsCoordinator(navigationController: navigationController)
     start(child: coordinator)
   }
 }
