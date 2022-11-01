@@ -12,64 +12,64 @@ import RxCocoa
 import SnapKit
 import Then
 
-final class HomeViewController: UIViewController {
-
-  weak var coordinator: HomeCoordinator?
-
+final class HomeViewController: BaseViewController {
+  
   private lazy var clockView = FlipClockView()
-  private let disposeBag = DisposeBag()
-
+  
   // MARK: - Life Cycle
-
-  override func viewDidLoad() {
-    super.viewDidLoad()
-    configure()
-    binding()
-  }
-
+  
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
     clockView.start()
     UIApplication.shared.isIdleTimerDisabled = true
   }
-
+  
   override func viewWillDisappear(_ animated: Bool) {
     super.viewWillDisappear(animated)
     clockView.stop()
     UIApplication.shared.isIdleTimerDisabled = false
   }
-}
-
-// MARK: - Configuration
-
-extension HomeViewController {
-
-  private func configure() {
+  
+  override func setupLayouts() {
+    super.setupLayouts()
+    
     view.addSubview(clockView)
-
-    clockView.snp.makeConstraints { make in
-      make.top.equalTo(view.safeAreaLayoutGuide)
-      make.bottom.equalTo(view.safeAreaLayoutGuide).inset(40)
-      make.leading.trailing.equalTo(view.safeAreaLayoutGuide).inset(40)
-    }
-
+    
     navigationItem.rightBarButtonItem = UIBarButtonItem(
       image: UIImage(systemName: "gearshape.fill"),
       style: .done,
       target: self,
       action: #selector(settingButtonDidTapped)
     )
+  }
+  
+  override func setupConstraints() {
+    super.setupConstraints()
+    
+    clockView.snp.makeConstraints { make in
+      make.top.equalTo(view.safeAreaLayoutGuide)
+      make.bottom.equalTo(view.safeAreaLayoutGuide).inset(40)
+      make.leading.trailing.equalTo(view.safeAreaLayoutGuide).inset(40)
+    }
+  }
+  
+  override func setupStyles() {
+    super.setupStyles()
     navigationController?.navigationBar.tintColor = .label
   }
-
-  private func binding() {
+  
+  override func bind() {
+    super.bind()
+    
     Theme.currentTheme
       .map { UIColor(rgb: $0.colors.background) }
       .bind(to: self.view.rx.backgroundColor)
       .disposed(by: disposeBag)
   }
-
+  
+  
   @objc func settingButtonDidTapped() {
-    coordinator?.moveToSetting()
+    guard let coordinator = coordinator as? HomeCoordinator else { return }
+      coordinator.moveToSetting()
   }
 }
