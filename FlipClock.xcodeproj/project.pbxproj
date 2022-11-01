@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BA02674B291168550062D231 /* BaseCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA02674A291168550062D231 /* BaseCoordinator.swift */; };
 		BA3CFB6128D2074400F097E1 /* SnapShotModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA3CFB6028D2074400F097E1 /* SnapShotModel.swift */; };
 		BA3CFB6428D20C4200F097E1 /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = BA3CFB6328D20C4200F097E1 /* RxCocoa */; };
 		BA3CFB6628D20C4200F097E1 /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = BA3CFB6528D20C4200F097E1 /* RxSwift */; };
@@ -39,6 +40,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		BA02674A291168550062D231 /* BaseCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCoordinator.swift; sourceTree = "<group>"; };
 		BA3CFB6028D2074400F097E1 /* SnapShotModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnapShotModel.swift; sourceTree = "<group>"; };
 		BA6D0F6428AE217900F1EF31 /* FlipItemViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlipItemViewModel.swift; sourceTree = "<group>"; };
 		BA6D0F6628AE30B500F1EF31 /* FlipAnimationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlipAnimationViewModel.swift; sourceTree = "<group>"; };
@@ -211,6 +213,7 @@
 		BAF2021829115DFD009AB13B /* Base */ = {
 			isa = PBXGroup;
 			children = (
+				BA02674A291168550062D231 /* BaseCoordinator.swift */,
 				BA7ECC2828757D4200511694 /* Coordinator.swift */,
 			);
 			path = Base;
@@ -338,6 +341,7 @@
 				BA7ECC2B28757D8A00511694 /* MainCoordinator.swift in Sources */,
 				BA95DE0F28671BDD00041A30 /* ViewController.swift in Sources */,
 				BAB686C1289AC3F3007D9F77 /* UIColor.swift in Sources */,
+				BA02674B291168550062D231 /* BaseCoordinator.swift in Sources */,
 				BA7ECC2528754CA600511694 /* FlipClockView.swift in Sources */,
 				BA95DE1F28671EFA00041A30 /* FlipItem.swift in Sources */,
 				BA95DE0B28671BDD00041A30 /* AppDelegate.swift in Sources */,
