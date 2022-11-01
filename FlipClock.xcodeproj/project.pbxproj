@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		BA02674B291168550062D231 /* BaseCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA02674A291168550062D231 /* BaseCoordinator.swift */; };
+		BA02674D291169050062D231 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA02674C291169050062D231 /* BaseViewController.swift */; };
 		BA3CFB6128D2074400F097E1 /* SnapShotModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA3CFB6028D2074400F097E1 /* SnapShotModel.swift */; };
 		BA3CFB6428D20C4200F097E1 /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = BA3CFB6328D20C4200F097E1 /* RxCocoa */; };
 		BA3CFB6628D20C4200F097E1 /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = BA3CFB6528D20C4200F097E1 /* RxSwift */; };
@@ -41,6 +42,7 @@
 
 /* Begin PBXFileReference section */
 		BA02674A291168550062D231 /* BaseCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCoordinator.swift; sourceTree = "<group>"; };
+		BA02674C291169050062D231 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		BA3CFB6028D2074400F097E1 /* SnapShotModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnapShotModel.swift; sourceTree = "<group>"; };
 		BA6D0F6428AE217900F1EF31 /* FlipItemViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlipItemViewModel.swift; sourceTree = "<group>"; };
 		BA6D0F6628AE30B500F1EF31 /* FlipAnimationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlipAnimationViewModel.swift; sourceTree = "<group>"; };
@@ -214,6 +216,7 @@
 			isa = PBXGroup;
 			children = (
 				BA02674A291168550062D231 /* BaseCoordinator.swift */,
+				BA02674C291169050062D231 /* BaseViewController.swift */,
 				BA7ECC2828757D4200511694 /* Coordinator.swift */,
 			);
 			path = Base;
@@ -354,6 +357,7 @@
 				BAB686C3289AD754007D9F77 /* UserDefaults.swift in Sources */,
 				BA7ECC2928757D4200511694 /* Coordinator.swift in Sources */,
 				BA3CFB6128D2074400F097E1 /* SnapShotModel.swift in Sources */,
+				BA02674D291169050062D231 /* BaseViewController.swift in Sources */,
 				BA7ECC2E28759CB200511694 /* SettingsViewController.swift in Sources */,
 				BAA743E928F6E3C400B9A768 /* ThemeHeaderView.swift in Sources */,
 				BA6D0F6728AE30B500F1EF31 /* FlipAnimationViewModel.swift in Sources */,
