@@ -48,8 +48,8 @@
 		BA77EF8E289A0DEC005CF4F6 /* ThemeCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeCoordinator.swift; sourceTree = "<group>"; };
 		BA77EF90289A21FC005CF4F6 /* ThemeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeViewModel.swift; sourceTree = "<group>"; };
 		BA77EF92289A23D8005CF4F6 /* ThemeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeTableViewCell.swift; sourceTree = "<group>"; };
-		BA7ECC222875293100511694 /* FlipView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FlipView.swift; path = ../../FlipView.swift; sourceTree = "<group>"; };
-		BA7ECC2428754CA600511694 /* FlipClockView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FlipClockView.swift; path = ../../FlipClockView.swift; sourceTree = "<group>"; };
+		BA7ECC222875293100511694 /* FlipView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlipView.swift; sourceTree = "<group>"; };
+		BA7ECC2428754CA600511694 /* FlipClockView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlipClockView.swift; sourceTree = "<group>"; };
 		BA7ECC2828757D4200511694 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		BA7ECC2A28757D8A00511694 /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
 		BA7ECC2D28759CB200511694 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
@@ -61,7 +61,7 @@
 		BA95DE1328671BDE00041A30 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BA95DE1628671BDE00041A30 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BA95DE1828671BDE00041A30 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		BA95DE1E28671EFA00041A30 /* FlipItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FlipItem.swift; path = ../../FlipItem.swift; sourceTree = "<group>"; };
+		BA95DE1E28671EFA00041A30 /* FlipItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlipItem.swift; sourceTree = "<group>"; };
 		BAA57DDC28DDFBE500F10197 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		BAA743E828F6E3C400B9A768 /* ThemeHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeHeaderView.swift; sourceTree = "<group>"; };
 		BAB686C0289AC3F3007D9F77 /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
@@ -83,28 +83,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		BA5FBB0E28796B1A00209EDD /* Views */ = {
+		BA5FBB0E28796B1A00209EDD /* Sources */ = {
 			isa = PBXGroup;
 			children = (
-				BA95DE0E28671BDD00041A30 /* ViewController.swift */,
-				BAC6AEB328B075F7004F01BF /* FlipItem */,
-				BAC6AEB428B0760A004F01BF /* FlipView */,
-				BAC6AEB528B07615004F01BF /* FlipClockView */,
+				BA95DE0A28671BDD00041A30 /* AppDelegate.swift */,
+				BA95DE0C28671BDD00041A30 /* SceneDelegate.swift */,
+				BA95DE1528671BDE00041A30 /* LaunchScreen.storyboard */,
+				BAF2021929116158009AB13B /* Home */,
 				BAC6AEB628B07656004F01BF /* SettingsVC */,
 				BAC6AEB728B07665004F01BF /* ThemeVC */,
 			);
-			path = Views;
-			sourceTree = "<group>";
-		};
-		BA7ECC2C28757F1500511694 /* Coordinators */ = {
-			isa = PBXGroup;
-			children = (
-				BA7ECC2828757D4200511694 /* Coordinator.swift */,
-				BA7ECC2A28757D8A00511694 /* MainCoordinator.swift */,
-				BA77EF8E289A0DEC005CF4F6 /* ThemeCoordinator.swift */,
-				BA7ECC302875A04D00511694 /* SettingCoordinator.swift */,
-			);
-			path = Coordinators;
+			path = Sources;
 			sourceTree = "<group>";
 		};
 		BA95DDFE28671BDD00041A30 = {
@@ -126,13 +115,8 @@
 		BA95DE0928671BDD00041A30 /* FlipClock */ = {
 			isa = PBXGroup;
 			children = (
-				BAB686BE289AC322007D9F77 /* Extensions */,
-				BA95DE0A28671BDD00041A30 /* AppDelegate.swift */,
-				BA95DE0C28671BDD00041A30 /* SceneDelegate.swift */,
-				BA7ECC2C28757F1500511694 /* Coordinators */,
-				BA5FBB0E28796B1A00209EDD /* Views */,
-				BA95DE1328671BDE00041A30 /* Assets.xcassets */,
-				BA95DE1528671BDE00041A30 /* LaunchScreen.storyboard */,
+				BAF2021529115D02009AB13B /* Configurations */,
+				BA5FBB0E28796B1A00209EDD /* Sources */,
 				BA95DE1828671BDE00041A30 /* Info.plist */,
 			);
 			path = FlipClock;
@@ -141,7 +125,6 @@
 		BAB686BE289AC322007D9F77 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				BAA57DDC28DDFBE500F10197 /* Theme.swift */,
 				BAB686C0289AC3F3007D9F77 /* UIColor.swift */,
 				BAB686C2289AD754007D9F77 /* UserDefaults.swift */,
 			);
@@ -178,9 +161,10 @@
 		BAC6AEB628B07656004F01BF /* SettingsVC */ = {
 			isa = PBXGroup;
 			children = (
+				BA7ECC302875A04D00511694 /* SettingCoordinator.swift */,
 				BA77EF872898F03F005CF4F6 /* SettingTableViewCell.swift */,
-				BA77EF892898F4E4005CF4F6 /* SettingsViewModel.swift */,
 				BA7ECC2D28759CB200511694 /* SettingsViewController.swift */,
+				BA77EF892898F4E4005CF4F6 /* SettingsViewModel.swift */,
 			);
 			path = SettingsVC;
 			sourceTree = "<group>";
@@ -188,12 +172,60 @@
 		BAC6AEB728B07665004F01BF /* ThemeVC */ = {
 			isa = PBXGroup;
 			children = (
+				BA77EF8E289A0DEC005CF4F6 /* ThemeCoordinator.swift */,
 				BAA743E828F6E3C400B9A768 /* ThemeHeaderView.swift */,
 				BA77EF92289A23D8005CF4F6 /* ThemeTableViewCell.swift */,
-				BA77EF90289A21FC005CF4F6 /* ThemeViewModel.swift */,
 				BA77EF8C28995550005CF4F6 /* ThemeViewController.swift */,
+				BA77EF90289A21FC005CF4F6 /* ThemeViewModel.swift */,
 			);
 			path = ThemeVC;
+			sourceTree = "<group>";
+		};
+		BAF2021529115D02009AB13B /* Configurations */ = {
+			isa = PBXGroup;
+			children = (
+				BAF2021729115DC2009AB13B /* Assets */,
+				BAF2021829115DFD009AB13B /* Base */,
+				BAF2021629115D4A009AB13B /* Constants */,
+				BAB686BE289AC322007D9F77 /* Extensions */,
+			);
+			path = Configurations;
+			sourceTree = "<group>";
+		};
+		BAF2021629115D4A009AB13B /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				BAA57DDC28DDFBE500F10197 /* Theme.swift */,
+			);
+			path = Constants;
+			sourceTree = "<group>";
+		};
+		BAF2021729115DC2009AB13B /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				BA95DE1328671BDE00041A30 /* Assets.xcassets */,
+			);
+			path = Assets;
+			sourceTree = "<group>";
+		};
+		BAF2021829115DFD009AB13B /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				BA7ECC2828757D4200511694 /* Coordinator.swift */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
+		BAF2021929116158009AB13B /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				BAC6AEB528B07615004F01BF /* FlipClockView */,
+				BAC6AEB428B0760A004F01BF /* FlipView */,
+				BAC6AEB328B075F7004F01BF /* FlipItem */,
+				BA7ECC2A28757D8A00511694 /* MainCoordinator.swift */,
+				BA95DE0E28671BDD00041A30 /* ViewController.swift */,
+			);
+			path = Home;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
