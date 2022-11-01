@@ -75,7 +75,7 @@ extension SettingsViewController: UITableViewDelegate {
 
     switch indexPath.section {
     case 0: // theme
-      guard let coordinator = coordinator as? SettingCoordinator else { return }
+      guard let coordinator = coordinator as? SettingsCoordinator else { return }
       coordinator.moveToThemeVC()
     case 1: // mail
       sendMail()
