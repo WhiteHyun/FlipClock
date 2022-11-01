@@ -11,41 +11,27 @@ import UIKit
 import SnapKit
 import Then
 
-final class SettingsViewController: UIViewController {
+final class SettingsViewController: BaseViewController {
 
-  weak var coordinator: SettingCoordinator?
-  var viewModel = SettingsViewModel()
+  let viewModel = SettingsViewModel()
 
   private lazy var tableView = UITableView(frame: .zero, style: .insetGrouped).then {
     $0.dataSource = self
     $0.delegate = self
     $0.register(SettingTableViewCell.self, forCellReuseIdentifier: SettingTableViewCell.id)
   }
-
-  override func viewDidLoad() {
-    super.viewDidLoad()
-    configureLayout()
-    configureConstraints()
-    configureUI()
+  // MARK: - Configuration
+  
+  override func setupLayouts() {
+    super.setupLayouts()
+    self.view.addSubview(tableView)
   }
-}
-
-// MARK: - Configuration
-
-extension SettingsViewController {
-
-  private func configureLayout() {
-    view.addSubview(tableView)
-  }
-
-  private func configureConstraints() {
+  
+  override func setupConstraints() {
+    super.setupConstraints()
     tableView.snp.makeConstraints { make in
       make.edges.equalToSuperview()
     }
-  }
-
-  private func configureUI() {
-    view.backgroundColor = .systemBackground
   }
 }
 
@@ -89,7 +75,8 @@ extension SettingsViewController: UITableViewDelegate {
 
     switch indexPath.section {
     case 0: // theme
-      coordinator?.moveToThemeVC()
+      guard let coordinator = coordinator as? SettingCoordinator else { return }
+      coordinator.moveToThemeVC()
     case 1: // mail
       sendMail()
     default:
