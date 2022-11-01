@@ -10,7 +10,7 @@ import UIKit
 final class SettingCoordinator: Coordinator {
 
   var childCoordinators: [Coordinator] = []
-  weak var parentCoordinator: MainCoordinator?
+  weak var parentCoordinator: HomeCoordinator?
   var navigationController: UINavigationController
 
   init(navigationController: UINavigationController) {

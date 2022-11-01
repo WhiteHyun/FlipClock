@@ -1,5 +1,5 @@
 //
-//  MainCoordinator.swift
+//  HomeCoordinator.swift
 //  FlipClock
 //
 //  Created by 홍승현 on 2022/07/06.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class MainCoordinator: NSObject, Coordinator {
+final class HomeCoordinator: NSObject, Coordinator {
 
   var childCoordinators: [Coordinator] = []
   var navigationController: UINavigationController
@@ -20,7 +20,7 @@ final class MainCoordinator: NSObject, Coordinator {
 
     navigationController.delegate = self
 
-    let homeVC = ViewController()
+    let homeVC = HomeViewController()
     homeVC.coordinator = self
     navigationController.pushViewController(homeVC, animated: false)
   }
@@ -43,7 +43,7 @@ final class MainCoordinator: NSObject, Coordinator {
 
 // MARK: - UINavigationControllerDelegate
 
-extension MainCoordinator: UINavigationControllerDelegate {
+extension HomeCoordinator: UINavigationControllerDelegate {
   func navigationController(
     _ navigationController: UINavigationController,
     didShow viewController: UIViewController,

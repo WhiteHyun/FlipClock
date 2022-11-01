@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  HomeViewController.swift
 //  FlipClock
 //
 //  Created by 홍승현 on 2022/06/25.
@@ -12,9 +12,9 @@ import RxCocoa
 import SnapKit
 import Then
 
-final class ViewController: UIViewController {
+final class HomeViewController: UIViewController {
 
-  weak var coordinator: MainCoordinator?
+  weak var coordinator: HomeCoordinator?
 
   private lazy var clockView = FlipClockView()
   private let disposeBag = DisposeBag()
@@ -42,7 +42,7 @@ final class ViewController: UIViewController {
 
 // MARK: - Configuration
 
-extension ViewController {
+extension HomeViewController {
 
   private func configure() {
     view.addSubview(clockView)
