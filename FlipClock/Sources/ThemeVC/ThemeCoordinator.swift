@@ -7,16 +7,8 @@
 
 import UIKit
 
-final class ThemeCoordinator: Coordinator {
-
-  var childCoordinators: [Coordinator] = []
-  var navigationController: UINavigationController
-
-  init(navigationController: UINavigationController) {
-    self.navigationController = navigationController
-  }
-
-  func start() {
+final class ThemeCoordinator: BaseCoordinator {
+  override func start() {
     let themeVC = ThemeViewController()
     themeVC.coordinator = self
     navigationController.pushViewController(themeVC, animated: true)
