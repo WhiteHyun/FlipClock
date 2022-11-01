@@ -12,27 +12,25 @@ import RxCocoa
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
-  let disposeBag = DisposeBag()
+  private let disposeBag: DisposeBag = DisposeBag()
+  private let coordinator: AppCoordinator = AppCoordinator(
+    navigationController: UINavigationController()
+  )
   var window: UIWindow?
-  var coordinator: MainCoordinator?
 
   func scene(
     _ scene: UIScene,
     willConnectTo session: UISceneSession,
     options connectionOptions: UIScene.ConnectionOptions
   ) {
-    guard let scene = (scene as? UIWindowScene) else { return }
-    window = UIWindow(windowScene: scene)
-
-    let navVC = UINavigationController()
-    coordinator = MainCoordinator(navigationController: navVC)
-
-    window?.rootViewController = navVC
+    guard let windowScene = scene as? UIWindowScene else { return }
+    window = UIWindow(windowScene: windowScene)
+    window?.rootViewController = coordinator.navigationController
     window?.makeKeyAndVisible()
 
-    coordinator?.start()
+    coordinator.start()
 
-    // MARK: - UserDefaults Observation
+    // MARK: UserDefaults Observation
 
     UserDefaults.standard.rx
       .observeWeakly(Int.self, "theme")
