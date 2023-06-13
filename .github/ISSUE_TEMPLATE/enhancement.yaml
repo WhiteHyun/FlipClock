@@ -1,0 +1,17 @@
+name: 🔨 Enhancement/Feature
+description: Feature suggestions, enhancements or suggested improvements :)
+title: "[Feat]: "
+labels: ["enhancement"]
+body:
+  - type: textarea
+    id: describe
+    attributes:
+      label: 📝 Describe Your Request
+      description: Tell us more about your request, suggestion or enhancement :D
+    validations:
+      required: true
+  - type: textarea
+    id: screenshots
+    attributes:
+      label: 📷 Screenshots
+      description: Add screenshots to explain your enhancement/request/suggestion!
